@@ -25,6 +25,27 @@
 .panel-content{
     padding: .3em 0 ;
 }
+/*ui-card*/
+.ui-card{
+    margin:.3em 1em;
+    /*padding:.5em;*/
+    /*background-color: #333;*/
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: -apple-system-font,Arial,"Times New Roman","Helvetica Neue", sans-serif;
+    letter-spacing:1px;
+}
+.ui-card-in-page-content{
+    margin: 0;
+}
+.ui-card-header{
+   text-align: center;
+   height: 3em;
+   line-height: 3em;
+}
+.ui-card-content{
+   padding: .5em;
+}
 /*ui-btn*/
 /*.ui-btn,
 .ui-btn-primary{

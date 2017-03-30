@@ -39,27 +39,6 @@
       </view>
     </view>
   </view>
-
-  <!--<view class="page__bd page__bd_spacing">
-        <view class="weui-article__h1">实用工具</view>
-        <view class="weui-flex">
-            <view class="weui-flex__item" bindtap="bindViewTo2048">
-              <view class="placeholder">2048</view>
-            </view>
-            <view class="weui-flex__item" bindtap="bindViewToWeather">
-              <view class="placeholder">天气查询</view>
-            </view>
-        </view>
-        <view class="weui-article__h1">小游戏</view>
-        <view class="weui-flex">
-            <view class="weui-flex__item" bindtap="bindViewTo2048">
-              <view class="placeholder">2048</view>
-            </view>
-            <view class="weui-flex__item" bindtap="bindViewToWeather">
-              <view class="placeholder">天气查询</view>
-            </view>
-        </view>
-    </view>-->
 </view>
 
 <!--<view class="container">

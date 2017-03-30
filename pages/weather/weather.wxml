@@ -1,2 +1,71 @@
+
 <!--pages/weather/weather.wxml-->
-<text>天气查询</text>
+<view class="page {{show}}">
+  <view class="ui-card {{todyWeather.style}}">
+    <view class="ui-card-header">
+      <image class="map-icon" src="{{mapIconSrc}}" background-size="cover" mode="aspectFit"></image>
+      {{todyWeather.city}}
+    </view>
+    <view class="ui-card-content">
+      <view class="today-info">
+        <text class="weather">{{todyWeather.weather}}</text>
+      </view>
+      <view class="realtime-temperature">
+        {{todyWeather.realtimeTemperature}}
+
+        <!--<text class="realtime-date">{{todyWeather.date}}</text>-->
+      </view>
+      <view class="ui-flex">
+        <view class="ui-flex-item">
+          {{todyWeather.temperature}}
+        </view>
+        <view class="ui-flex-item">
+          <view class="pm25">
+            <text>PM2.5: {{todyWeather.pm25}}</text>
+          </view>
+        </view>
+      </view>
+
+      <!--<text>城市：{{todyWeather.city}}</text>
+      <text>PM2.5：{{todyWeather.pm25}}</text>
+      <text>日期：{{todyWeather.date}}</text>
+      <text>实时温度：{{todyWeather.realtimeTemperature}}</text>-->
+
+      <!--<text>温度：{{todyWeather.temperature}}</text>
+      <text>天气：{{todyWeather.weather}}</text>
+      <text>风向：{{todyWeather.wind}}</text>-->
+    </view>
+    <view class="ui-card-footer"></view>
+  </view>
+  <view class="page-content">
+    <view class="ui-panel weather-future">
+      <view class="panel-title">未来三天</view>
+      <view class="panel-content">
+        <view class="ui-flex">
+          <view wx:for="{{futureThreeDay}}" class="ui-flex-item">
+            <view class="weather-item {{item.style}}">
+              <view>{{item.date}}</view>
+              <view><image class="weather-icon" src="{{item.img}}" background-size="cover" mode="aspectFit"></image></view>
+              <view>{{item.temperature}}</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!--<view class="werther">
+    <text>城市：{{todyWeather.city}}</text>
+    <text>PM2.5：{{todyWeather.pm25}}</text>
+    <text>日期：{{todyWeather.date}}</text>
+    <text>实时温度：{{todyWeather.realtimeTemperature}}</text>
+    <text>温度：{{todyWeather.temperature}}</text>
+    <text>天气：{{todyWeather.weather}}</text>
+    <text>风向：{{todyWeather.wind}}</text>
+  </view>-->
+  <view class="page-content">
+    <view class="werther">
+      <text>{{weatherData}}</text>
+    </view>
+  </view>
+</view>

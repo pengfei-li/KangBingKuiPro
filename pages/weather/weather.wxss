@@ -1,1 +1,92 @@
 /* pages/weather/weather.wxss */
+
+/*不同天气设置不同过的背景颜色*/
+
+/*雨天*/
+
+.rain {
+  background-color: #5080A0;
+  border-color: #5080A0;
+}
+
+/*晴天*/
+.sunny {
+  background-color: #3693BE;
+  border-color: #3693BE;
+}
+
+/*多云*/
+.cloudy {
+  background-color: #708892;
+  border-color: #708892;
+}
+
+/*雪天*/
+.snow {
+  background-color: #788e95;
+  border-color: #788e95;
+}
+.ui-card {
+  color: #fff;
+}
+
+/*控制显隐*/
+.show {
+  display: block;
+}
+.hide {
+  display: none;
+}
+.map-icon {
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+}
+.realtime-temperature {
+  font-size: 4em;
+  text-align: left;
+  height: 2em;
+  width: 100%;
+  display: block;
+  overflow: hidden;
+}
+.realtime-date {
+  font-size: 1.2em;
+}
+.today-info {
+  height: 22px;
+}
+.weather {
+  float: left;
+  font-size: 14px;
+  line-height: 22px;
+  height: 22px;
+}
+.pm25 {
+  border: 1px solid #fff;
+  border-radius: 5px;
+  width: auto;
+  display: block;
+  height: 30px;
+  line-height: 30px;
+  padding: 0 5px;
+  float: right;
+}
+
+/*未来三天*/
+.weather-item {
+  text-align: center;
+  margin: .3em;
+  border-radius: 5px;
+  border: 1px solid #eee;
+  padding: 1em 0;
+}
+.weather-icon {
+  width: 30px;
+  height: 30px;
+  display: block;
+  margin: 0 auto;
+}
+.page-content{
+  padding: 1em;
+}
