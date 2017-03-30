@@ -1,14 +1,15 @@
-
-
 .container {
-  margin: 0;
-  padding: 20px 0;
-  background: #faf8ef;
-  color: #776e65;
-  font-family: "Helvetica Neue", Arial, sans-serif;
-  font-size: 18px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0;
+  box-sizing: border-box;
+} 
+.game-body{
+  margin-top:2em; 
 }
-
 .heading:after {
   content: "";
   display: block;

@@ -1,7 +1,6 @@
 {
   "pages":[
     "pages/index/index",
-    "pages/logs/logs",
     "pages/xiaomi/xiaomi",
     "pages/2048/2048",
     "pages/weather/weather"

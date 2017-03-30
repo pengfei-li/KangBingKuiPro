@@ -18,7 +18,12 @@ Page({
   },
   calc: () => {
     wx.navigateTo({
-      url: '../weather/weather'
+      url: '../xiaomi/xiaomi'
+    });
+  },
+  tapTo2048:()=>{
+    wx.navigateTo({
+      url: '../2048/2048'
     });
   },
   onLoad: function () {

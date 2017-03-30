@@ -30,7 +30,7 @@
       <view class="panel-content">
         <view class="ui-flex">
           <view class="ui-btn ui-flex-item">
-            <button type="primary" loading="{{loading}}" bindtap="weatherSearch">2048</button>
+            <button type="primary" loading="{{loading}}" bindtap="tapTo2048">2048</button>
           </view>
           <view class="ui-btn ui-flex-item">
             

@@ -10,7 +10,7 @@ Page({
     mapIconSrc: '../../src/img/map.png',
     todyWeather: '', //今天天气
     futureThreeDay: [], //未来三天
-    variousIndex: '' //各项指数
+    variousIndex: [] //各项指数
   },
   onLoad: function(options) {
     // 页面初始化 options为页面跳转所带来的参数
@@ -20,7 +20,6 @@ Page({
       ak: 'g4I2oOxpdnhxmuQwYaDrrLayDqZBft78'
     });
     let fail = function(data) {
-      console.log(data);
       tools.loadingEnd();
       tools.errorDialog('数据获取失败，重新加载', query);
     };
@@ -28,12 +27,13 @@ Page({
       //处理数据，返回自定义格式数据
       let _tody = _.dealTodayData(data.currentWeather[0]);
       let _future = _.dealFuture(data.originalData.results[0].weather_data);
-      console.log(_future);
-
+      let _index = _.dealIndex(data.originalData.results[0].index);
+      console.log(data.originalData.results[0].index);
       _.setData({
         show: 'show',
         todyWeather: _._addItemData(_tody),
-        futureThreeDay: _future
+        futureThreeDay: _future,
+        variousIndex: _index
       });
       tools.loadingEnd();
     }
@@ -56,18 +56,32 @@ Page({
       realtimeTemperature: _now,
       temperature: utils.dealTemperature(data.temperature),
       weather: data.weatherDesc,
-      wind: data.wind
+      wind: data.wind,
+      iconSrc: utils.weatherLevel(data.weatherDesc),
     };
     return _result;
   },
   dealFuture: function(data) {
+    let _ = this;
     let _result = [];
     for (let i = 1; i < data.length; i++) {
       let _item = {
         weather: data[i].weather,
         date: data[i].date,
-        img: data[i].dayPictureUrl,
-        temperature: utils.dealTemperature(data[i].temperature)
+        temperature: utils.dealTemperature(data[i].temperature),
+        iconSrc: utils.weatherMoreLevel(data[i].weather)
+      };
+      _result.push(_item);
+    }
+    return _result;
+  },
+  dealIndex: (data) => {
+    let _result = [];
+    for (let i = 1; i < data.length; i++) {
+      let _item = {
+        title: data[i].title,
+        value: data[i].zs,
+        desc: data[i].des
       };
       _result.push(_item);
     }
@@ -75,27 +89,8 @@ Page({
   },
   // 返回背景颜色，并设置背景色
   _addItemData: function(item) {
-    var _ = this;
-    let _weather = item.weather;
-    if (_weather.indexOf('雪') > 0) {
-      //下雪
-      return item;
-    }
-    if (_weather.indexOf('雨') > 0) {
-      //雨天
-      item.style = 'rain';
-      return item;
-    }
-    if (_weather.indexOf('晴') > 0) {
-      //晴天
-      item.style = 'sunny';
-      return item;
-    }
-    if (_weather.indexOf('云') > 0) {
-      //多云
-      item.style = 'cloudy';
-      return item;
-    }
+    item.style = utils.returnStyle(item.weather);
+    return item;
   },
   onReady: function() {
     // 页面渲染完成
