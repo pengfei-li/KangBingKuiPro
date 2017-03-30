@@ -1,0 +1,54 @@
+/*flex float*/
+.ui-flex {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+}
+.ui-flex-item {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+          flex: 1;
+}
+/*ui-panel*/
+.ui-panel{
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+}
+.panel-title{
+    height: 1.6em;
+    line-height: 1.6em;
+    font-size: 1em;
+    color: #333;
+    font-weight: 600;
+}
+.panel-content{
+    padding: .3em 0 ;
+}
+/*ui-btn*/
+/*.ui-btn,
+.ui-btn-primary{
+    background-color: #eee;
+    text-align: center;
+    margin: .5em;
+    border-radius: .3em;
+    height: 2.4em;
+    line-height: 2.4em;
+    font-size: 1em;
+    display: block;
+    color: #000;
+    box-sizing: border-box;
+}
+.ui-btn{
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+.ui-btn:active{
+    background-color: #ccc;
+}
+.ui-btn-primary{
+    background-color: #1AAD19;
+    color: #fff;
+}*/
+button{
+    margin: .3em;
+}
