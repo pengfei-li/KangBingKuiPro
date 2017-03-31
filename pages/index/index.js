@@ -1,6 +1,7 @@
 //index.js
 //获取应用实例
-var app = getApp()
+var app = getApp();
+let tools = require('../../utils/tools');
 Page({
   data: {
     userInfo: {
@@ -12,19 +13,16 @@ Page({
   },
   //事件处理函数
   weatherSearch: () => {
-    wx.navigateTo({
-      url: '../weather/weather'
-    });
+    tools.navTo('weather');
   },
   calc: () => {
-    wx.navigateTo({
-      url: '../xiaomi/xiaomi'
-    });
+    tools.navTo('calc');
   },
   tapTo2048:()=>{
-    wx.navigateTo({
-      url: '../2048/2048'
-    });
+    tools.navTo('2048');
+  },
+  tapToXiaomi:()=>{
+    tools.navTo('xiaomi');
   },
   onLoad: function () {
 

@@ -28,7 +28,6 @@ Page({
       let _tody = _.dealTodayData(data.currentWeather[0]);
       let _future = _.dealFuture(data.originalData.results[0].weather_data);
       let _index = _.dealIndex(data.originalData.results[0].index);
-      console.log(data.originalData.results[0].index);
       _.setData({
         show: 'show',
         todyWeather: _._addItemData(_tody),
@@ -57,7 +56,7 @@ Page({
       temperature: utils.dealTemperature(data.temperature),
       weather: data.weatherDesc,
       wind: data.wind,
-      iconSrc: utils.weatherLevel(data.weatherDesc),
+      iconSrc: utils.weatherMoreLevel(data.weatherDesc)[0].src,
     };
     return _result;
   },

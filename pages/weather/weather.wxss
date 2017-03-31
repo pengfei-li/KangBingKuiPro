@@ -26,8 +26,8 @@
 
 /*雪天*/
 .snow {
-  background-color: #788e95;
-  border-color: #788e95;
+  background-color: #E0E0E0;
+  border-color: #E0E0E0;
 }
 .ui-card {
   color: #fff;

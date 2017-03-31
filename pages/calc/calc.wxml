@@ -1,0 +1,48 @@
+<view class="page">
+  <view class="calc-scope">
+    <view class="exp-template {{show}}">
+      <view class="exp-one">{{expression.first}}</view>
+      <view>
+        <view class="exp-two">{{expression.second}}</view>
+        <view class="exp-operate">{{expression.operator}}</view>
+      </view>
+      <view class="exp-result"><view class="result-icon">=</view>{{expression.result}}</view>
+    </view>
+    <view class="now-number">{{val}}</view>
+  </view>
+  <view class="button-group">
+    <view class="ui-flex">
+      <view class="ui-flex-item" bindtap="btnClicked" data-val="c">C</view>
+      <view class="ui-flex-item" bindtap="btnClicked" data-val="d">Del</view>
+      <view class="ui-flex-item" bindtap="btnClicked" data-val="÷">÷</view>
+      <view class="ui-flex-item" bindtap="btnClicked" data-val="x">×</view>
+    </view>
+    <view class="ui-flex">
+      <view class="ui-flex-item" bindtap="btnClicked" data-val="7">7</view>
+      <view class="ui-flex-item" bindtap="btnClicked" data-val="8">8</view>
+      <view class="ui-flex-item" bindtap="btnClicked" data-val="9">9</view>
+      <view class="ui-flex-item" bindtap="btnClicked" data-val="-">-</view>
+    </view>
+    <view class="ui-flex">
+      <view class="ui-flex-item" bindtap="btnClicked" data-val="4">4</view>
+      <view class="ui-flex-item" bindtap="btnClicked" data-val="5">5</view>
+      <view class="ui-flex-item" bindtap="btnClicked" data-val="6">6</view>
+      <view class="ui-flex-item" bindtap="btnClicked" data-val="+">+</view>
+    </view>
+    <view class="height-double">
+      <view class="ui-flex-item ui-flex-item-3">
+        <view class="ui-flex">
+          <view class="ui-flex-item" bindtap="btnClicked" data-val="1">1</view>
+          <view class="ui-flex-item" bindtap="btnClicked" data-val="2">2</view>
+          <view class="ui-flex-item" bindtap="btnClicked" data-val="3">3</view>
+        </view>
+        <view class="ui-flex">
+            <view class="ui-flex-item" bindtap="btnClicked" data-val="%">%</view>
+            <view class="ui-flex-item" bindtap="btnClicked" data-val="0">0</view>
+            <view class="ui-flex-item" bindtap="btnClicked" data-val=".">.</view>
+        </view>
+      </view>
+      <view class="ui-flex-item height-2" bindtap="btnClicked" data-val="=">=</view>
+    </view>
+  </view>
+</view>

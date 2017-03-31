@@ -1,0 +1,90 @@
+/* pages/calc/calc.wxss */
+/*显示器*/
+.exp-template{
+    padding: .5em;
+}
+.exp-template view{
+     height: 40px;
+    text-align: right;
+    font-weight: bold;
+    line-height: 40px;
+}
+.exp-one{
+   width: 100%;
+}
+.exp-operate,.exp-two{
+    display: block;
+    float: right;
+}
+.exp-operate{
+    margin-right: 2em;
+}
+.exp-two{
+    width: auto;
+}
+.exp-result{
+    border-top: .5px solid #333;
+}
+.result-icon{
+    display: block;
+    float: left;
+}
+.now-number{
+    font-weight: bold;
+    font-size: 2.2em;
+    text-align: right;
+    padding: 0 .2em;
+    position: absolute;
+    top: 160px;
+    display: block;
+    right: 0;
+}
+/*操作键盘*/
+.button-group{
+    background-color: #fff;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: block;
+    height: auto;
+}
+.button-group .ui-flex{
+    height: 140rpx;
+    width: 100%;
+    border-top: .5px solid #ccc;
+}
+.height-double{
+    display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+   height: 280rpx;
+}
+
+.button-group .height-double .ui-flex-item{
+    height: 280rpx;
+}
+.button-group .ui-flex .ui-flex-item{
+    text-align: center;
+    height: 140rpx;
+    line-height: 140rpx;
+    border-right: .5px solid #ccc;
+    font-size: 1.5em;
+}
+.button-group .ui-flex .ui-flex-item:active,
+.height-double .height-2:active{
+    background-color: #eee;
+}
+.button-group .ui-flex .ui-flex-item:last-child,
+.height-double .ui-flex-item:last-child{
+    /*border-right: none;*/
+}
+.height-double .height-2{
+    height: 280rpx;
+    text-align: center;
+    line-height: 280rpx;
+    /*border-left: .5px solid #ccc;*/
+    border-top: .5px solid #ccc;
+    font-size: 1.5em;
+    /*margin-right: -.5px;*/
+}

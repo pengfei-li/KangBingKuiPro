@@ -29,7 +29,7 @@ module.exports = {
 	returnStyle: function(str) {
 		if (str.indexOf('雪') > 0) {
 			//下雪
-			return '';
+			return 'snow';
 		}
 		if (str.indexOf('雨') > 0) {
 			//雨天

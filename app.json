@@ -3,7 +3,8 @@
     "pages/index/index",
     "pages/xiaomi/xiaomi",
     "pages/2048/2048",
-    "pages/weather/weather"
+    "pages/weather/weather",
+    "pages/calc/calc"
   ],
   "window":{
     "backgroundTextStyle":"black",
