@@ -23,7 +23,7 @@
     width: auto;
 }
 .exp-result{
-    border-top: .5px solid #333;
+    border-top: .5px solid #ccc;
 }
 .result-icon{
     display: block;

@@ -80,8 +80,12 @@ module.exports = {
 	changeOperate: (data, str) => {
 		//更改操作符，如果已经存在结果，则把结果赋给下次计算的第一个值，直接开始输入第二个值
 		//如果连个参数都有，则计算结果
+		let _one = data.expression.first;
 		let _result = data.expression.result;
 		let _two = data.expression.second;
+		if(!_one){
+			data.expression.first = '0';
+		}
 		//有结果
 		if (_result) {
 			//赋值

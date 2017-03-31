@@ -2,8 +2,8 @@
 
 /*不同天气设置不同过的背景颜色*/
 .default{
-  background-color: #eee;
-  border-color: #eee;
+  background-color: #00CD66;
+  border-color: #00CD66;
 }
 /*雨天*/
 
