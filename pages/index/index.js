@@ -12,11 +12,14 @@ Page({
     }
   },
   //事件处理函数
-  weatherSearch: () => {
+  tapToWeather: () => {
     tools.navTo('weather');
   },
-  calc: () => {
+  tapToCalc: () => {
     tools.navTo('calc');
+  },
+  tapToMemo: ()=>{
+    tools.navTo('memo');
   },
   tapTo2048:()=>{
     tools.navTo('2048');

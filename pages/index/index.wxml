@@ -16,10 +16,18 @@
       <view class="panel-content">
         <view class="ui-flex">
           <view class="ui-btn ui-flex-item">
-            <button type="primary" bindtap="weatherSearch">天气查询</button>
+            <button type="primary" bindtap="tapToWeather">天气查询</button>
           </view>
           <view class="ui-btn ui-flex-item">
-            <button type="primary" bindtap="calc">计算器</button>
+            <button type="primary" bindtap="tapToCalc">计算器</button>
+          </view>
+        </view>
+        <view class="ui-flex">
+          <view class="ui-btn ui-flex-item">
+            <button type="primary" bindtap="tapToMemo">备忘录</button>
+          </view>
+          <view class="ui-btn ui-flex-item">
+            <button type="primary" bindtap="calc"></button>
           </view>
         </view>
       </view>

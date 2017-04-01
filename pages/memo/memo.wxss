@@ -1,0 +1,39 @@
+/* pages/memo/memo.wxss */
+
+.memo-card {
+  background-color: #42AFFF;
+  border: none;
+  color: #fff;
+  padding: 1.1em;
+  margin: .5em;
+  border-radius: 20rpx;
+}
+button{
+  margin: .5em;
+}
+.memo-card.success {
+  background-color: #3EE4BF;
+}
+.memo-card.realtime {
+  background-color: #FFAC45;
+}
+.memo-card.outtime {
+  background-color: #FF42B2;
+}
+.memo-time{
+    font-size: 12px;
+    height: 32px;
+    width: 100%;
+    line-height: 32px;
+}
+.state-icon{
+    float: right;
+    height: 26px;
+    width: 26px;
+}
+.memo-content{
+    font-size: 14px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}

@@ -1,0 +1,61 @@
+
+<!--备忘录-->
+<view class="page">
+  <view wx:for="{{memo}}">
+    <view wx:if="{{item.state == 0}}">
+
+      <!--正常-->
+      <view class="memo-card">
+        <view class="memo-name">{{item.name}}
+          <image bindtap="setState" data-index="{{index}}" class="state-icon" src="../../src/icon/default.png"></image>
+        </view>
+        <view class="memo-time">
+          {{item.date}}
+        </view>
+        <view class="memo-content">
+          <text>{{item.content}}</text>
+        </view>
+      </view>
+    </view>
+    <view wx:elif="{{item.state == 3}}">
+
+      <!--完成-->
+      <view class="memo-card success">
+        <view class="memo-name">{{item.name}}
+          <image class="state-icon" bindtap="setState" data-index="{{index}}" src="../../src/icon/success.png"></image>
+        </view>
+        <view class="memo-time">{{item.date}}</view>
+        <view class="memo-content">
+          <text>{{item.content}}</text>
+        </view>
+      </view>
+    </view>
+    <view wx:elif="{{item.state == 1}}">
+
+      <!--进行中-->
+      <view class="memo-card realtime">
+        <view class="memo-name">{{item.name}}
+          <image class="state-icon" bindtap="setState" data-index="{{index}}" src="../../src/icon/realtime.png"></image>
+        </view>
+        <view class="memo-time">{{item.date}}</view>
+        <view class="memo-content">
+          <text>{{item.content}}</text>
+        </view>
+      </view>
+    </view>
+    <view wx:else>
+
+      <!--超时-->
+      <view class="memo-card outtime">
+        <view class="memo-name">{{item.name}}
+          <image class="state-icon" bindtap="setState" data-index="{{index}}" src="../../src/icon/outtime.png"></image>
+        </view>
+        <view class="memo-time">{{item.date}}</view>
+        <view class="memo-content">
+          <text>{{item.content}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <button type="primary" bindtap="addMemo">增加备忘录</button>
+</view>
