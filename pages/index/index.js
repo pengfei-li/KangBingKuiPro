@@ -21,6 +21,9 @@ Page({
   tapToMemo: ()=>{
     tools.navTo('memo');
   },
+  tapToAnimate: ()=>{
+    tools.navTo('animate');
+  }, 
   tapTo2048:()=>{
     tools.navTo('2048');
   },

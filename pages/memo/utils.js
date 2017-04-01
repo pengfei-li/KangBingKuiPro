@@ -2,32 +2,41 @@
 var tools = require('../../utils/tools.js');
 var _key = 'kangbingkui_pro_memo';
 module.exports = {
-    addOne: function () {
+    addOne: function (title,content,callback) {
+        var _ = this;
         //获取当前key的数据，没有返回空数组
-        var _memo = this.getData();
-        _memo.push({
-            name: '超时的备忘录',
-            date: '2017-04-01',
-            content: '这条信息已经超时，右上角可以修改状态。',
-            state: 2//状态0：正常 1：进行中  2：过时
+        _.getData((_memo) => {
+            _memo.push({
+                name: title,
+                date: tools.formatTime(new Date()),
+                content: content,
+                state: 0//状态0：正常 1：进行中  2：过时
+            });
+            _.updateData(_memo);
+            tools.showToast();
+            callback(_memo);
         });
-        wx.setStorage({
-            key: _key,
-            data: "value"
-        })
     },
     deleteOne: function () { },
-    updateData: function () { },
-    getData: function () {
+    updateData: function (_memo) {
+        wx.setStorage({
+            key: _key,
+            data: _memo
+        })
+    },
+    getData: function (callback) {
         wx.getStorage({
             key: _key,
             success: function (res) {
-                console.log(res.data)
-            }, fail: function () {
-                console.log('error');
-                return [];
+                callback(res.data);
+            },
+            fail: function (res) {
+                callback([]);
+            },
+            complete: function (res) {
+                // complete
             }
-        })
+        });
     },
 
 

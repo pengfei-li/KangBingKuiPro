@@ -5,7 +5,8 @@
     "pages/2048/2048",
     "pages/weather/weather",
     "pages/calc/calc",
-    "pages/memo/memo"
+    "pages/memo/memo",
+    "pages/animate/animate"
   ],
   "window":{
     "backgroundTextStyle":"black",

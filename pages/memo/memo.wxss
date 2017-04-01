@@ -1,39 +1,94 @@
 /* pages/memo/memo.wxss */
 
 .memo-card {
-  background-color: #42AFFF;
+  background-color: #42afff;
   border: none;
   color: #fff;
   padding: 1.1em;
-  margin: .5em;
+  margin: 0.5em;
   border-radius: 20rpx;
 }
-button{
-  margin: .5em;
+
+button {
+  margin: 0.5em;
 }
+
 .memo-card.success {
-  background-color: #3EE4BF;
+  background-color: #3ee4bf;
 }
+
 .memo-card.realtime {
-  background-color: #FFAC45;
+  background-color: #ffac45;
 }
+
 .memo-card.outtime {
-  background-color: #FF42B2;
+  background-color: #ff42b2;
 }
-.memo-time{
-    font-size: 12px;
-    height: 32px;
-    width: 100%;
-    line-height: 32px;
+
+.memo-time {
+  font-size: 12px;
+  height: 32px;
+  width: 100%;
+  line-height: 32px;
 }
-.state-icon{
-    float: right;
-    height: 26px;
-    width: 26px;
+
+.state-icon {
+  float: right;
+  height: 26px;
+  width: 26px;
 }
-.memo-content{
-    font-size: 14px;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
+
+.memo-content {
+  font-size: 14px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/*modal in*/
+
+.memo-add {
+  margin: 0.5em;
+}
+
+.memo-title {
+  width: 100%;
+  height: 45px;
+}
+
+.memo-title .label {
+  width: 25%;
+  float: left;
+  height: 45px;
+  line-height: 45px;
+  background-color: #fff;
+  text-align: center;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.memo-value {
+  width: 75%;
+  float: left;
+  height: 45px;
+  line-height: 45px;
+}
+
+.memo-add-content {
+  margin-top: 20rpx;
+  width: 100%;
+  background-color: #fff;
+}
+
+textarea.memo-con {
+  display: block;
+  width: 90%;
+  margin: 0 5%;
+  height: 200px;
+  padding: 40rpx 0;
+}
+
+input, textarea {
+  background-color: #fff;
+  font-size: 14px;
 }

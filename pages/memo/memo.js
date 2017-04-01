@@ -3,31 +3,25 @@ var utils = require('./utils.js');
 var tools = require('../../utils/tools.js');
 Page({
   data: {
-    memo: [{
-      name: '赶火车',
-      date: '2017-04-01',
-      content: '下午赶火车',
-      state: 0//状态0：正常 1：进行中  2：过时 3:完成
-    }, {
-      name: '赶火车',
-      date: '2017-04-01',
-      content: '下午赶火车',
-      state: 3//状态0：正常 1：进行中  2：过时 3:完成
-    }, {
-      name: '功能增加',
-      date: '2017-04-01',
-      content: '功能正在缓慢增加...',
-      state: 1//状态0：正常 1：进行中  2：过时
-    }, {
-      name: '超时的备忘录',
-      date: '2017-04-01',
-      content: '这条信息已经超时，右上角可以修改状态。',
-      state: 2//状态0：正常 1：进行中  2：过时
-    }]
+    memo: [],
+    modalAnimate: {}
   },
   onLoad: function (options) {
     // 页面初始化 options为页面跳转所带来的参数
-    utils.getData();
+    let _ = this;
+    utils.getData((_memo) => {
+      console.log(_memo);
+      _.setData({
+        memo: _memo
+      });
+    });
+  },
+  updateMemoData: function (_memo) {
+    this.setData({
+      memo: _memo
+    });
+    //更新localStorage
+    utils.updateData(_memo);
   },
   setState: function (e) {
     let _ = this, index = e.target.dataset.index;
@@ -35,21 +29,41 @@ Page({
     wx.showActionSheet({
       itemList: ['进行中', '超时', '完成'],
       success: function (res) {
-        console.log(res.tapIndex);
-        _memo[index].state = res.tapIndex + 1;
-        _.setData({
-          memo: _memo
-        });
-        //重新保存数据
-
+        let _seetIndex = res.tapIndex;
+        console.log('_index' + _seetIndex);
+        if (_seetIndex != 3 && _seetIndex != undefined) {
+          _memo[index].state = res.tapIndex + 1;
+          _.updateMemoData(_memo);
+        }
       },
       fail: function (res) {
-        tools.errorDialog('状态修改失败，请重新尝试！');
+        // tools.errorDialog('状态修改失败，请重新尝试！');
       }
     });
   },
-  addMemo: function () {
-
+  openAddModal: function () {
+    this.setData({
+      modalAnimate: tools.modalOpen()
+    });
+  },
+  closeAddModal: function () {
+    this.setData({
+      modalAnimate: tools.modalClose()
+    });
+  },
+  addOneMemo: function (e) {
+    let _ = this;
+    let _title = e.detail.value.title.trim();
+    let _content = e.detail.value.content.trim();
+    if (!_title || !_content) {
+      tools.warnDialog('备忘名和内容不能为空！');
+      return false;
+    }
+    _.closeAddModal();
+    utils.addOne(_title, _content, (data) => {
+      console.log(data);
+      _.updateMemoData(data);
+    });
   },
   onReady: function () {
     // 页面渲染完成

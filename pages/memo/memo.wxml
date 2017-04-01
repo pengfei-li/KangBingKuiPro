@@ -57,5 +57,21 @@
       </view>
     </view>
   </view>
-  <button type="primary" bindtap="addMemo">增加备忘录</button>
+  <button type="primary" bindtap="openAddModal">增加备忘录</button>
+</view>
+<view animation="{{modalAnimate}}" class="ui-modal">
+  <image class="ui-modal-close" bindtap="closeAddModal" src="../../src/icon/close.png"></image>
+  <form class="ui-modal-form" bindsubmit="addOneMemo" bindreset="formReset">
+    <view class="memo-add">
+      <view class="memo-title">
+        <view class="label">备忘名:</view>
+        <input class="memo-value" name="title" placeholder="备忘名"/>
+      </view>
+      <view class="memo-add-content">
+        <textarea class="memo-con" name="content" placeholder="输入备忘内容..." maxlength="210" cursor-spacing="5" />
+      </view>
+    </view>
+    <button type="primary" formType="reset">重置</button>
+    <button type="primary" formType="submit">增加备忘录</button>
+  </form>
 </view>

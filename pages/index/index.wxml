@@ -27,7 +27,7 @@
             <button type="primary" bindtap="tapToMemo">备忘录</button>
           </view>
           <view class="ui-btn ui-flex-item">
-            <button type="primary" bindtap="calc"></button>
+            <button type="primary" bindtap="tapToAnimate">Animate</button>
           </view>
         </view>
       </view>
