@@ -10,15 +10,19 @@ module.exports = {
                 name: title,
                 date: tools.formatTime(new Date()),
                 content: content,
-                state: 0, //状态0：正常 1：进行中  2：过时
-                style: ''
+                state: 0 //状态0：正常 1：进行中  2：过时  3：完成
             });
             _.updateData(_memo);
-            tools.showToast();
+            tools.showToast('添加成功!');
             callback(_memo);
         });
     },
-    deleteOne: function() {},
+    deleteOne: function(_memo, _index) {
+        _memo.splice(_index, 1);
+        this.updateData(_memo);
+        tools.showToast('删除成功!');
+        return _memo;
+    },
     updateData: function(_memo) {
         wx.setStorage({
             key: _key,

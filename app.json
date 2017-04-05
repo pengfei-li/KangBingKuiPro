@@ -5,7 +5,6 @@
         "pages/weather/weather",
         "pages/calc/calc",
         "pages/memo/memo",
-        "pages/animate/animate",
         "pages/QRcode/QRcode"
     ],
     "window": {

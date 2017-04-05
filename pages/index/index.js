@@ -21,14 +21,19 @@ Page({
     tapToMemo: () => {
         tools.navTo('memo');
     },
-    tapToAnimate: () => {
-        tools.navTo('animate');
-    },
     tapTo2048: () => {
         tools.navTo('2048');
     },
     tapToQRcode: () => {
         tools.navTo('QRcode');
+    },
+    clearAllMemo: () => {
+        wx.removeStorage({
+            key: 'kangbingkui_pro_memo',
+            success: function() {
+                tools.showToast('清除成功!')
+            }
+        });
     },
     onLoad: function() {
 

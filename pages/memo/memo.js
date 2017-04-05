@@ -5,16 +5,14 @@ Page({
     data: {
         memo: [],
         modalAnimate: {},
-        startX: 0,
-        moveX: 0,
-        endX: 0,
-        delBtnWidth: 180
+        detailAnimate: {},
+        detalItem: {},
+        detailStyle: ''
     },
     onLoad: function(options) {
         // 页面初始化 options为页面跳转所带来的参数
         let _ = this;
         utils.getData((_memo) => {
-            console.log(_memo);
             _.setData({
                 memo: _memo
             });
@@ -32,11 +30,14 @@ Page({
             index = e.target.dataset.index;
         let _memo = _.data.memo;
         wx.showActionSheet({
-            itemList: ['进行中', '超时', '完成'],
+            itemList: ['进行中', '超时', '完成', '删除'],
             success: function(res) {
                 let _seetIndex = res.tapIndex;
-                console.log('_index' + _seetIndex);
-                if (_seetIndex != 3 && _seetIndex != undefined) {
+                if (_seetIndex == 3) {
+                    //删除当前选中的数据
+                    _memo = utils.deleteOne(_memo, index);
+                    _.updateMemoData(_memo);
+                } else if (_seetIndex != 4 && _seetIndex != undefined) {
                     _memo[index].state = res.tapIndex + 1;
                     _.updateMemoData(_memo);
                 }
@@ -64,12 +65,62 @@ Page({
             tools.warnDialog('备忘名和内容不能为空！');
             return false;
         }
+        //清空输入框和文本域
+        //
         _.closeAddModal();
         utils.addOne(_title, _content, (data) => {
-            console.log(data);
             _.updateMemoData(data);
         });
     },
+    /*showDetail: function(e) {
+        let _index = e.currentTarget.dataset.index;
+        let _item = this.data.memo[_index];
+        let _s = '';
+        switch (_item.state) {
+            case 1:
+                _s = 'realtime';
+                break;
+            case 2:
+                _s = 'outtime';
+                break;
+            case 3:
+                _s = 'success';
+                break;
+            default:
+                _s = '';
+                break;
+        }
+        console.log(_item);
+        this.setData({
+            detalItem: _item,
+            detailStyle: _s
+        });
+        //定义动画
+        var modalOpenView = wx.createAnimation({
+            duration: 400,
+            timingFunction: "ease",
+            delay: 0
+        })
+        modalOpenView.top(0).step();
+
+        this.setData({
+            detailAnimate: modalOpenView.export()
+        });
+    },
+    closeDetail: function() {
+        console.log('in');
+        //定义动画
+        var modalOpenView = wx.createAnimation({
+            duration: 400,
+            timingFunction: "ease",
+            delay: 0
+        })
+        modalOpenView.top('100%').step();
+
+        this.setData({
+            detailAnimate: modalOpenView.export()
+        });
+    },*/
     onReady: function() {
         // 页面渲染完成
     },
@@ -81,40 +132,5 @@ Page({
     },
     onUnload: function() {
         // 页面关闭
-    },
-    touchS: function(e) {
-        if (e.touches.length == 1) {
-            this.setData({
-                //设置触摸起始点水平方向位置
-                startX: e.touches[0].clientX
-            });
-        }
-    },
-    touchM: function(e) {
-        console.log(e);
-        if (e.touches.length == 1) {
-            let _moveX = e.touches[0].clientX;
-            let _disX = this.data.startX - _moveX;
-            let _btnWidth = this.data.delBtnWidth;
-            let _style = '';
-            //判断是否是左划
-            if (_disX < 0 || _disX == 0) {
-                _style = 'left:0px;'
-            } else {
-                _style = 'left:-' + _disX + 'px;';
-                if (_disX >= _btnWidth) {
-                    _style = 'left:-' + _btnWidth + 'px;';
-                }
-            }
-            let _index = e.target.dataset.index;
-            let _data = this.data.memo;
-            console.log(_data);
-            console.log(_index);
-            _data[_index].style = _style;
-            this.setData({
-                memo: _data
-            });
-        }
-    },
-    touchE: function(e) {}
+    }
 })

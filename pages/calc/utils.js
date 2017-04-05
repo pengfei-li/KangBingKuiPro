@@ -83,7 +83,7 @@ module.exports = {
 		let _one = data.expression.first;
 		let _result = data.expression.result;
 		let _two = data.expression.second;
-		if(!_one){
+		if (!_one) {
 			data.expression.first = '0';
 		}
 		//有结果
@@ -171,12 +171,16 @@ module.exports = {
 	calculationResult: (flag, data) => {
 		//flag为判断是否是点击等号进入计算，如果是下次输入数据前清除数据
 		//如果没有运算符，直接返回当前第一个数
-		//有运算符，没有第二个数，也直接返回第二个数
+		//有运算符，没有第二个数，增设置第二个输和第一个一样
 		let _operate = data.expression.operator;
 		let _two = data.expression.second;
-		if (_operate || _two) {
+		if (_operate) {
 			let x = parseFloat(data.expression.first);
 			let y = parseFloat(data.expression.second);
+			if (!_two) {
+				y = x;
+				data.expression.second = x;
+			}
 			data.expression.result = module.exports.dealCalculate(x, y, data.expression.operator);
 		} else {
 			data.expression.result = data.expression.first;

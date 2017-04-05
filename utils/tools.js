@@ -21,7 +21,7 @@ module.exports = {
             title: '错误',
             content: msg,
             showCancel: false,
-            success: function (res) {
+            success: function(res) {
                 if (res.confirm) {
                     if (callback) callback();
                 }
@@ -33,7 +33,7 @@ module.exports = {
             title: '警告',
             content: msg,
             showCancel: false,
-            success: function (res) {
+            success: function(res) {
                 if (res.confirm) {
                     if (callback) callback();
                 }
@@ -62,7 +62,7 @@ module.exports = {
             timingFunction: "ease",
             delay: 0
         })
-        modalOpenView.top('100%').step();
+        modalOpenView.top('100%').opacity(0).step();
         return modalOpenView.export();
     },
     formatTime: (date) => {

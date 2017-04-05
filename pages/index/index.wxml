@@ -30,14 +30,6 @@
             <button type="primary" bindtap="tapToQRcode">二维码生成器</button>
           </view>
         </view>
-        <view class="ui-flex">
-          <view class="ui-btn ui-flex-item">
-            <button type="primary" bindtap="tapToAnimate">Animate</button>
-          </view>
-          <view class="ui-btn ui-flex-item">
-            <button type="primary" bindtap="tapToAnimate"></button>
-          </view>
-        </view>
       </view>
     </view>
     <!--小游戏-->
@@ -47,6 +39,19 @@
         <view class="ui-flex">
           <view class="ui-btn ui-flex-item">
             <button type="primary" bindtap="tapTo2048">2048</button>
+          </view>
+          <view class="ui-btn ui-flex-item">
+            
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="ui-panel">
+      <view class="panel-title">内容管理</view>
+      <view class="panel-content">
+        <view class="ui-flex">
+          <view class="ui-btn ui-flex-item">
+            <button type="primary" bindtap="clearAllMemo">清除备忘录</button>
           </view>
           <view class="ui-btn ui-flex-item">
             
