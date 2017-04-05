@@ -1,0 +1,26 @@
+<!--pages/QRcode/QRcode.wxml-->
+<view class="page">
+	<view class="container-box">
+	    <view class="img-box">
+	        <canvas bindtap="previewImg" hidden="{{canvasHidden}}" class="qrcode-style" canvas-id="kbk_pro_qrcode"/>
+	    </view>
+	    <form bindsubmit="formSubmit">
+	        <view class="input-row">
+	            <!--<label>网址</label>-->
+	            <picker bindchange="bindPickerChange" name="type" range="{{qrtype}}" value="{{qrtypeIndex}}">
+				    <view class="picker">
+				      	{{qrtype[qrtypeIndex]}}
+				      	<view class="icon-select"></view>
+				    </view>
+				 </picker>
+	            <input name='value' value='' type="text" maxlength="255" placeholder="{{placeholder}}"/>
+	        </view>
+	        <button formType="submit" type="primary">生成二维码</button>
+	    </form>
+	</view>
+	<view hidden="{{maskHidden}}" class="mask"></view>
+	<view class="canvas-box">
+	    
+	</view>
+</view>
+

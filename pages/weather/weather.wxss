@@ -92,9 +92,9 @@
   text-align: center;
   margin: .3em;
   border-radius: 5px;
-  border: 1px solid #eee;
   padding: 1em 0;
-  background-color: rgba(26,173,25,.7);
+  /*background-color: rgba(26,173,25,.7);*/
+  background-color: #3ee4bf;
   color: #fff;
 }
 .weather-icon {

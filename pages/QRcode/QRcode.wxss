@@ -1,0 +1,63 @@
+/* pages/QRcode/QRcode.wxss */
+.container-box {
+	background-color: #F8F8F8;
+}
+
+/*.page{
+	padding-top: 32rpx;
+}*/
+.qrcode-style {
+	width: 686rpx;
+	height: 756rpx;
+	background: #fff;
+	border: 1rpx solid #e5e5e5;
+	border-radius: 5px;
+	overflow: hidden;
+}
+.img-box {
+	padding-top: 32rpx;
+	margin: 0 32rpx;
+	position: relative
+}
+.img-box image {
+	width: 686rpx;
+	height: 756rpx;
+	background-color: #f9f9f9
+}
+.input-row {
+	margin: 30rpx auto;
+	border-bottom: 1rpx solid #e5e5e5;
+	border-top: 1rpx solid #e5e5e5;
+	display: flex;
+	align-items: center;
+	height: 88rpx;
+	padding: 0 32rpx;
+	background-color: #fff;
+	font-size: 34rpx;
+	color: #000
+}
+.input-row input {
+	margin-left: 100rpx;
+	flex: 1
+}
+.mask {
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 3;
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+}
+.icon-select {
+	display: block;
+	width: 0;
+	height: 0;
+	border: 10rpx solid #ccc;
+	float: right;
+	border-left-color: transparent;
+	border-bottom-color: transparent;
+	border-right-color: transparent;
+	margin-top: 21rpx;
+	margin-left: 10rpx;
+}

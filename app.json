@@ -1,18 +1,18 @@
 {
-  "pages":[
-    "pages/index/index",
-    "pages/xiaomi/xiaomi",
-    "pages/2048/2048",
-    "pages/weather/weather",
-    "pages/calc/calc",
-    "pages/memo/memo",
-    "pages/animate/animate"
-  ],
-  "window":{
-    "backgroundTextStyle":"black",
-    "navigationBarBackgroundColor": "#f8f8f8",
-    "navigationBarTitleText": "康兵奎Pro",
-    "navigationBarTextStyle":"black",
-    "backgroundColor": "#f8f8f8"
-  }
+    "pages": [
+        "pages/index/index",
+        "pages/2048/2048",
+        "pages/weather/weather",
+        "pages/calc/calc",
+        "pages/memo/memo",
+        "pages/animate/animate",
+        "pages/QRcode/QRcode"
+    ],
+    "window": {
+        "backgroundTextStyle": "black",
+        "navigationBarBackgroundColor": "#f8f8f8",
+        "navigationBarTitleText": "康兵奎Pro",
+        "navigationBarTextStyle": "black",
+        "backgroundColor": "#f8f8f8"
+    }
 }
