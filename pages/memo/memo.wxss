@@ -1,5 +1,12 @@
 /* pages/memo/memo.wxss */
-
+.list-content{
+  position: relative;
+  display: block;
+  width: 100%;
+  height: auto;
+  left: 0;
+  top: 0;
+}
 .memo-card {
   background-color: #42afff;
   border: none;
@@ -7,6 +14,7 @@
   padding: 1.1em;
   margin: 0.5em;
   border-radius: 20rpx;
+  position: relative;
 }
 
 button {

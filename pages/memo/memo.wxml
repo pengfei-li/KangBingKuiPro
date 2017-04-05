@@ -1,11 +1,14 @@
 
 <!--备忘录-->
 <view class="page">
-  <view wx:for="{{memo}}">
+  <view class="list-content">
+    
+  
+  <view wx:for="{{memo}}" wx:key="{{index}}">
     <view wx:if="{{item.state == 0}}">
 
       <!--正常-->
-      <view class="memo-card">
+      <view class="memo-card" style="{{item.style}}" bindtouchstart="touchS" bindtouchmove="touchM" bindtouchend="touchE" data-index="{{index}}">
         <view class="memo-name">{{item.name}}
           <image bindtap="setState" data-index="{{index}}" class="state-icon" src="../../src/icon/default.png"></image>
         </view>
@@ -15,12 +18,13 @@
         <view class="memo-content">
           <text>{{item.content}}</text>
         </view>
+        <view data-index="{{index}}" bindtap="delItem" class="innerdel">删除</view>
       </view>
     </view>
     <view wx:elif="{{item.state == 3}}">
 
       <!--完成-->
-      <view class="memo-card success">
+      <view class="memo-card success" style="{{item.style}}" bindtouchstart="touchS" bindtouchmove="touchM" bindtouchend="touchE" data-index="{{index}}">
         <view class="memo-name">{{item.name}}
           <image class="state-icon" bindtap="setState" data-index="{{index}}" src="../../src/icon/success.png"></image>
         </view>
@@ -33,7 +37,7 @@
     <view wx:elif="{{item.state == 1}}">
 
       <!--进行中-->
-      <view class="memo-card realtime">
+      <view class="memo-card realtime" style="{{item.style}}" bindtouchstart="touchS" bindtouchmove="touchM" bindtouchend="touchE" data-index="{{index}}">
         <view class="memo-name">{{item.name}}
           <image class="state-icon" bindtap="setState" data-index="{{index}}" src="../../src/icon/realtime.png"></image>
         </view>
@@ -46,7 +50,7 @@
     <view wx:else>
 
       <!--超时-->
-      <view class="memo-card outtime">
+      <view class="memo-card outtime" style="{{item.style}}" bindtouchstart="touchS" bindtouchmove="touchM" bindtouchend="touchE" data-index="{{index}}">
         <view class="memo-name">{{item.name}}
           <image class="state-icon" bindtap="setState" data-index="{{index}}" src="../../src/icon/outtime.png"></image>
         </view>
@@ -56,6 +60,7 @@
         </view>
       </view>
     </view>
+  </view>
   </view>
   <button type="primary" bindtap="openAddModal">增加备忘录</button>
 </view>
@@ -68,7 +73,7 @@
         <input class="memo-value" name="title" placeholder="备忘名"/>
       </view>
       <view class="memo-add-content">
-        <textarea class="memo-con" name="content" placeholder="输入备忘内容..." maxlength="210" cursor-spacing="5" />
+        <textarea fixed="true" class="memo-con" name="content" placeholder="输入备忘内容..." maxlength="210" cursor-spacing="5" />
       </view>
     </view>
     <button type="primary" formType="reset">重置</button>
