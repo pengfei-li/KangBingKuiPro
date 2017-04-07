@@ -1,0 +1,16 @@
+<view class="page">
+	<view class="map-container" >
+		<map class="map" id="map" longitude="{{longitude}}" latitude="{{latitude}}" scale="15" show-location="true" markers="{{markers}}" bindmarkertap="makertap" bindcontroltap="controlTap"></map>
+	</view>
+	<view class="searchbar">
+		<input placeholder="输入关键字" type="text" bindinput="bindKeyInput"/> 
+	</view>
+	<view class="map-detail-info" style="{{mapStyle}}">
+		
+		<scroll-view scroll-y="true" style="height:150px;">
+		    <view wx:for="{{sugData}}" wx:key="{{index}}" bindtap="">
+		    	{{item.name}}
+		    </view>
+		</scroll-view>
+	</view>
+</view>

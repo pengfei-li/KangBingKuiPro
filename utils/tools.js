@@ -1,4 +1,84 @@
+let config = require('./config.js');
 module.exports = {
+    getUserOpenId: () => {
+        try {
+            var value = wx.getStorageSync('userOpenId')
+            if (value) {
+                return value;
+            }
+        } catch (e) {
+            module.exports.getUserOpenId();
+        }
+    },
+    getAccessToken: () => {
+        try {
+            var value = wx.getStorageSync('AccessToken')
+            if (value) {
+                return value;
+            }
+        } catch (e) {
+            module.exports.getAccessToken();
+        }
+    },
+    query: (url, data, callback) => {
+        wx.request({
+            url: url,
+            data: data,
+            header: {
+                'content-type': 'application/json'
+            },
+            success: function(res) {
+                callback(res.data);
+            }
+        });
+    },
+    ApiCloudPost: (url, data, callback) => {
+        wx.request({
+            url: url,
+            data: data,
+            method: 'POST',
+            header: {
+                'content-type': 'application/json',
+                'X-APICloud-AppId': config.APICloud_AppId,
+                'X-APICloud-AppKey': config.APICloud_AppKey
+            },
+            success: function(res) {
+                callback(res);
+            }
+        });
+    },
+    ApiCloudGet: (url, data, callback) => {
+        let filter = {
+            "where": data
+        };
+        url = url + '?filter=' + encodeURIComponent(JSON.stringify(filter));
+        // url = 'https://d.apicloud.com/mcm/api/schedule?filter=%7B%22where%22%3A%7B%22wx_openid%22%3A%22ohhIL0eDizGxbTDJzK9BiSwYWdXw%22%7D%2C%22skip%22%3A0%2C%22limit%22%3A20%7D';
+        console.log(url);
+        wx.request({
+            url: url,
+            method: 'GET',
+            header: {
+                'X-APICloud-AppId': config.APICloud_AppId,
+                'X-APICloud-AppKey': config.APICloud_AppKey
+            },
+            success: function(res) {
+                callback(res);
+            }
+        });
+    },
+    post: (url, data, callback) => {
+        wx.request({
+            url: url,
+            data: data,
+            method: 'POST',
+            header: {
+                'content-type': 'application/json'
+            },
+            success: function(res) {
+                callback(res.data);
+            }
+        });
+    },
     loading: (str) => {
         wx.showLoading({
             title: str
@@ -73,6 +153,15 @@ module.exports = {
         var minute = date.getMinutes()
         var second = date.getSeconds()
         return [year, month, day].map(module.exports.formatNumber).join('-') + ' ' + [hour, minute, second].map(module.exports.formatNumber).join(':')
+    },
+    formatDate: (date) => {
+        return module.exports.formatTime(date).split(' ')[0];
+    },
+    formatDateAddMouth: (mounth, date) => {
+        let _date = module.exports.formatDate(date);
+        let _d = _date.split('-');
+        let _new = new Date(_d[0], _d[1] - 1 + mounth, _d[2]);
+        return module.exports.formatDate(_new);
     },
     formatNumber: (n) => {
         n = n.toString()

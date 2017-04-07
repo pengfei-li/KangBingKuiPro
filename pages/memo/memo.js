@@ -70,6 +70,43 @@ Page({
         _.closeAddModal();
         utils.addOne(_title, _content, (data) => {
             _.updateMemoData(data);
+            console.log(e);
+            let _openId = tools.getUserOpenId();
+            let _formId = e.detail.formId;
+            //发送模版消息
+            _.sendTemplateMsg(_openId, _formId, {
+                name: _title,
+                content: _content,
+                date: tools.formatTime(new Date())
+            });
+        });
+
+    },
+    sendTemplateMsg: function(userId, formId, data) {
+        console.log('access_token', tools.getAccessToken());
+        let _opts = {
+            "touser": userId,
+            "template_id": "eKpMYdRrVjjhiSGkHlMp18JV3c7AFzvMFZY0b2iZD28",
+            "form_id": formId,
+            "data": {
+                "keyword1": {
+                    "value": data.name,
+                    "color": "#173177"
+                },
+                "keyword2": {
+                    "value": data.date,
+                    "color": "#173177"
+                },
+                "keyword3": {
+                    "value": data.content,
+                    "color": "#173177"
+                }
+            }
+        };
+        console.log('传递数据', _opts);
+        let _url = 'https://api.weixin.qq.com/cgi-bin/message/wxopen/template/send?access_token=' + tools.getAccessToken();
+        tools.post(_url, _opts, (res) => {
+            console.log(res);
         });
     },
     /*showDetail: function(e) {

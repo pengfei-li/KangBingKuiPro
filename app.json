@@ -5,7 +5,11 @@
         "pages/weather/weather",
         "pages/calc/calc",
         "pages/memo/memo",
-        "pages/QRcode/QRcode"
+        "pages/QRcode/QRcode",
+        "pages/poi/poi",
+        "pages/around/around",
+        "pages/tabs/tabs",
+        "pages/schedule/schedule"
     ],
     "window": {
         "backgroundTextStyle": "black",

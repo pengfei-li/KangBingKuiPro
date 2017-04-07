@@ -1,0 +1,73 @@
+<!-- <view class="page">
+  	<view class="sche-card">
+  		<view class="sche-state"></view>
+  		<view class="title">开会讨论小程序</view>
+  		<view class="time">
+  			<view class="date">2016年10月10日</view>
+  			<view class="time-h-m">
+  				<text class="left">10:30</text>
+  				<text class="center">-</text>
+  				<text class="right">12:30</text>
+  			</view>
+  		</view>
+  		<view class="desc">记得带上电脑</view>
+  	</view>
+  	<view class="sche-card">
+  		<view class="sche-state success"></view>
+  		<view class="title">开会讨论小程序</view>
+  		<view class="time">
+  			<view class="date">2016年10月10日</view>
+  			<view class="time-h-m">
+  				<text class="left">10:30</text>
+  				<text class="center">-</text>
+  				<text class="right">12:30</text>
+  			</view>
+  		</view>
+  		<view class="desc">记得带上电脑</view>
+  	</view>
+  	<view class="sche-card">
+  		<view class="sche-state realtime"></view>
+  		<view class="title">开会讨论小程序</view>
+  		<view class="time">
+  			<view class="date">2016年10月10日</view>
+  			<view class="time-h-m">
+  				<text class="left">10:30</text>
+  				<text class="center">-</text>
+  				<text class="right">12:30</text>
+  			</view>
+  		</view>
+  		<view class="desc">记得带上电脑</view>
+  	</view>
+  	<view class="sche-card">
+  		<view class="sche-state outtime"></view>
+  		<view class="title">开会讨论小程序</view>
+  		<view class="time">
+  			<view class="date">2016年10月10日</view>
+  			<view class="time-h-m">
+  				<text class="left">10:30</text>
+  				<text class="center">-</text>
+  				<text class="right">12:30</text>
+  			</view>
+  		</view>
+  		<view class="desc">记得带上电脑</view>
+  	</view>
+</view> -->
+
+<view class="add-sche">
+	<form class="ui-modal-form" report-submit="true" bindsubmit="addOneMemo" bindreset="formReset">
+    <view class="memo-add">
+      <view class="memo-title">
+        <view class="label">日程主题:</view>
+        <input class="memo-value" name="title" maxlength="20" placeholder="主题名"/>
+      </view>
+      <picker mode="date" value="{{date}}" start="2015-09-01" end="2017-09-01" bindchange="bindDateChange">
+	    <view class="picker">{{date}}</view>
+	  </picker>
+      <picker mode="time" value="{{time}}" start="00:00" end="23:59" bindchange="bindTimeChange">
+	    <view class="picker">{{time}}</view>
+	  </picker>
+    </view>
+    <button type="primary" form-type="reset">重置</button>
+    <button type="primary" form-type="submit">添加日程</button>
+  </form>
+</view>

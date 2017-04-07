@@ -1,0 +1,32 @@
+/* pages/around/around.wxss */
+.page{
+	width: 100%;
+	height: 100%;
+}
+.map-container{
+	height: 400px;
+	width: 100%;
+	display: block;
+}
+.map-container .map{
+	width: 100%;
+	height: 100%;
+	display: block;
+	z-index: 1;
+}
+.map-detail-info{
+	display: block;
+	width: 100%;
+	height: 100px;
+	background-color: #ccc;
+	border-radius: 2px;
+	overflow: hidden;
+}
+.searchbar{
+	height: 40px;
+	line-height: 40px;
+}
+.searchbar input{
+	height: 40px;
+	line-height: 40px;
+}
