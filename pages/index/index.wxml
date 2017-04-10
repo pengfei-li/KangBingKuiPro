@@ -35,15 +35,15 @@
             <button type="primary" bindtap="tapToSchedule">日程管理</button>
           </view>
           <view class="ui-btn ui-flex-item">
-            <button type="primary" bindtap="tapToAround">周围有什么</button>
+            <button type="primary" bindtap="tapToPoi">吃喝玩乐</button>
           </view>
         </view>
         <view class="ui-flex">
           <view class="ui-btn ui-flex-item">
-            <button type="primary" bindtap="tapToPoi">吃喝玩乐</button>
+            <button type="primary" bindtap="tapToAround">周围有什么</button>
           </view>
           <view class="ui-btn ui-flex-item">
-            <button type="primary" bindtap="tapToAround">周围有什么</button>
+            <button type="primary" bindtap="tapToPoi"></button>
           </view>
         </view>
       </view>

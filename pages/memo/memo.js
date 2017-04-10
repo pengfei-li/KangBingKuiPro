@@ -70,7 +70,6 @@ Page({
         _.closeAddModal();
         utils.addOne(_title, _content, (data) => {
             _.updateMemoData(data);
-            console.log(e);
             let _openId = tools.getUserOpenId();
             let _formId = e.detail.formId;
             //发送模版消息

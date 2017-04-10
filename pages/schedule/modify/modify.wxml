@@ -1,0 +1,31 @@
+<view class="page">
+	<form bindsubmit="updateOneSchedule" bindreset="formReset">
+	    <view class="schedule-add">
+		    <view class="schedule-title">
+		        <view class="label">日程主题:</view>
+		        <input class="schedule-value" value="{{title}}" name="title" maxlength="20" placeholder="主题名"/>
+		    </view>
+		    <picker class="schedule-date"  mode="date" name="date" value="{{date}}" start="{{interval_date.start}}" end="interval_date.end" bindchange="bindDateChange">
+			    <view class="label">日程日期:</view><view class="picker">{{date}}</view>
+			</picker>
+			<view class="schedule-time">
+				<view class="label">日程时间:</view>
+				<picker class="start" mode="time" name="start" value="{{startTime}}" start="00:00" end="23:59" bindchange="startTimeChange">
+				    <view class="picker">{{startTime}}</view>
+				</picker>
+				<view class="line">-</view>
+				<picker class="end" mode="time" name="end" value="{{endTime}}" start="00:00" end="23:59" bindchange="endTimeChange">
+				    <view class="picker">{{endTime}}</view>
+				</picker>
+			</view>
+		    <view class="schedule-desc">
+		    	<view class="label">日程描述:</view>
+		    	<textarea bindblur="bindTextAreaBlur" value="{{desc}}" name="desc" auto-height placeholder="在这里添加具体的描述信息..." />
+		    </view>
+			
+	    </view>
+	    <button type="primary" form-type="reset">重置</button>
+	    <button type="primary" bindtap="back">取消</button>
+	    <button type="primary" form-type="submit">修改日程</button>
+  	</form>
+</view>

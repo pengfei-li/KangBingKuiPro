@@ -5,8 +5,9 @@
   border: none;
   color: #fff;
   padding: 1.1em;
-  margin: 0.5em;
+  margin:.6em .5em;
   border-radius: 20rpx;
+  box-shadow: 0 0 20rpx rgba(120, 120, 120, .5);
 }
 
 button {

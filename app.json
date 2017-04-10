@@ -9,7 +9,9 @@
         "pages/poi/poi",
         "pages/around/around",
         "pages/tabs/tabs",
-        "pages/schedule/schedule"
+        "pages/schedule/schedule",
+        "pages/schedule/add/add",
+        "pages/schedule/modify/modify"
     ],
     "window": {
         "backgroundTextStyle": "black",

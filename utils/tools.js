@@ -32,7 +32,22 @@ module.exports = {
             }
         });
     },
-    ApiCloudPost: (url, data, callback) => {
+    ApiGet: (url, data, callback) => {
+        wx.request({
+            url: url,
+            data: data,
+            method: 'GET',
+            header: {
+                'content-type': 'application/json',
+                'X-APICloud-AppId': config.APICloud_AppId,
+                'X-APICloud-AppKey': config.APICloud_AppKey
+            },
+            success: function(res) {
+                callback(res.data);
+            }
+        });
+    },
+    ApiPost: (url, data, callback) => {
         wx.request({
             url: url,
             data: data,
@@ -43,27 +58,60 @@ module.exports = {
                 'X-APICloud-AppKey': config.APICloud_AppKey
             },
             success: function(res) {
-                callback(res);
+                callback(res.data);
             }
         });
     },
-    ApiCloudGet: (url, data, callback) => {
-        let filter = {
-            "where": data
-        };
+    ApiCloudLogin: (url, _data, callback) => {
+        module.exports.ApiPost(url, _data, (data) => {
+            callback(data);
+        });
+        // wx.request({
+        //     url: 'https://d.apicloud.com/mcm/api/user/login',
+        //     data: {
+        //         "username": "kangbingkui",
+        //         "password": "123456"
+        //     },
+        //     method: 'POST',
+        //     header: {
+        //         'content-type': 'application/json',
+        //         'X-APICloud-AppId': config.APICloud_AppId,
+        //         'X-APICloud-AppKey': config.APICloud_AppKey
+        //     },
+        //     success: function(res) {
+        //         console.log(res);
+        //         wx.setStorage({
+        //             key: 'sessionId',
+        //             value: res.data.id
+        //         })
+        //     }
+        // });
+    },
+    ApiCloudPost: (url, _data, callback) => {
+        module.exports.ApiPost(url, _data, (data) => {
+            callback(data);
+        });
+    },
+    ApiCloudGet: (url, filter, callback) => {
         url = url + '?filter=' + encodeURIComponent(JSON.stringify(filter));
-        // url = 'https://d.apicloud.com/mcm/api/schedule?filter=%7B%22where%22%3A%7B%22wx_openid%22%3A%22ohhIL0eDizGxbTDJzK9BiSwYWdXw%22%7D%2C%22skip%22%3A0%2C%22limit%22%3A20%7D';
-        console.log(url);
-        wx.request({
-            url: url,
-            method: 'GET',
-            header: {
-                'X-APICloud-AppId': config.APICloud_AppId,
-                'X-APICloud-AppKey': config.APICloud_AppKey
-            },
-            success: function(res) {
-                callback(res);
-            }
+        module.exports.ApiGet(url, '', (data) => {
+            callback(data);
+        });
+    },
+    ApiCloudPut: (url, id, _data, callback) => {
+        url = url + '/' + id;
+        _data._method = "PUT";
+        module.exports.ApiPost(url, _data, (data) => {
+            callback(data);
+        });
+    },
+    ApiCloudDelete: (url, id, callback) => {
+        url = url + '/' + id;
+        let _data = {
+            "_method": "DELETE"
+        };
+        module.exports.ApiPost(url, _data, (data) => {
+            callback(data);
         });
     },
     post: (url, data, callback) => {
@@ -125,6 +173,9 @@ module.exports = {
             url: '../' + name + '/' + name
         });
     },
+    back: () => {
+        wx.navigateBack()
+    },
     modalOpen: () => {
         //定义动画
         var modalOpenView = wx.createAnimation({
@@ -155,13 +206,29 @@ module.exports = {
         return [year, month, day].map(module.exports.formatNumber).join('-') + ' ' + [hour, minute, second].map(module.exports.formatNumber).join(':')
     },
     formatDate: (date) => {
-        return module.exports.formatTime(date).split(' ')[0];
+        let _date = module.exports.formatTime(date).split(' ')[0];
+        return module.exports.formatToString(_date);
+    },
+    formatToString: (dateStr) => {
+        let _date = dateStr.split('-');
+        return _date[0] + '年' + _date[1] + '月' + _date[2] + '日';
     },
     formatDateAddMouth: (mounth, date) => {
-        let _date = module.exports.formatDate(date);
+        let _date = module.exports.formatTime(date).split(' ')[0];
         let _d = _date.split('-');
         let _new = new Date(_d[0], _d[1] - 1 + mounth, _d[2]);
         return module.exports.formatDate(_new);
+    },
+    returnIntervalDate: (length, date) => {
+        let _start = module.exports.formatTime(date).split(' ')[0];
+        let _d = _start.split('-');
+        let _temp = new Date(_d[0], _d[1] - 1 + length, _d[2]);
+        let _end = module.exports.formatTime(_temp).split(' ')[0]
+        let _result = {
+            start: _start,
+            end: _end
+        };
+        return _result;
     },
     formatNumber: (n) => {
         n = n.toString()

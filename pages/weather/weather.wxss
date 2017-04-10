@@ -31,6 +31,9 @@
 }
 .ui-card {
   color: #fff;
+  border-radius: 20rpx;
+  box-shadow: 0 0 20rpx rgba(120, 120, 120, .5);
+  padding: 20rpx;
 }
 
 /*控制显隐*/
@@ -91,11 +94,12 @@
 .weather-item {
   text-align: center;
   margin: .3em;
-  border-radius: 5px;
   padding: 1em 0;
   /*background-color: rgba(26,173,25,.7);*/
-  background-color: #3ee4bf;
+  background-color: #ffac45;
   color: #fff;
+  border-radius: 20rpx;
+  box-shadow: 0 0 20rpx rgba(120, 120, 120, .3);
 }
 .weather-icon {
   width: 30px;
@@ -108,11 +112,12 @@
 }
 /*各项指数*/
 .index-item{
-  margin: .3em;
-  border: 1px solid #ccc;
-  padding: .5em;
-  border-radius: 5px;
-  background-color: #F6F4F5;
+  margin:.6em .3em;
+  border: 1rpx solid #eee;
+  padding: .8em;
+  background-color: #fff;
+  border-radius: 20rpx;
+  box-shadow: 0 0 20rpx rgba(120, 120, 120, .3);
 }
 .index-item-title{
   color: #252524;

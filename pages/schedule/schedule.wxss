@@ -62,4 +62,23 @@
 .desc{
 	font-size: 28rpx;
 	color: #666;
+	word-break: break-word;
+}
+.add-btn{
+	width: 120rpx;
+	height: 120rpx;
+	display: block;
+	position: fixed;
+	right: 40rpx;
+	bottom: 40rpx;
+	background-color: #fff;
+	border-radius: 60rpx;
+	border:1rpx solid #eee;
+	box-shadow: 0 0 20rpx rgba(120, 120, 120, .3);
+}
+.add-icon{
+	width: 100rpx;
+	height: 100rpx;
+	display: block;
+	margin: 10rpx;
 }
