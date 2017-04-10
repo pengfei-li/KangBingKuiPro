@@ -1,2 +1,10 @@
-<!--pages/tabs/tabs.wxml-->
-<text>pages/tabs/tabs.wxml</text>
+<view class="ui-search">
+	<view class="ui-sarch-panel" animation="{{searchPanelShow}}">
+		<input class="search-input" type="text" confirm-type="search"/>
+		<button class="search-btn" type="default">取消</button>
+	</view>
+	<view animation="{{searchOpen}}" class="ui-search-icon" bindtap="searchFocus">
+		<image class="search-icon" mode="aspectFill" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFrSURBVFhH7ZZ/cYNAEIWRUAmRUAlIiIPGQeMgEcCPOCAScBAcpA4aB+Cg/R7z6PAPDQekmc7wzexcd7ndfXdHjkYrK/+KJEm2WZYd0jS92Ar8tzzPXzzlMdDoiNU0+2K8MVaMZ42KOV4sLkQFKXxxkwo/9qMfPEcCG6zGf/Wj+XQrpPDeoUFovOGIPhYToVWpOUV3Dt1Fu9ETMf04lKwiWOnQaMiNvWtHh8LRqlVk6lbS/IZd7YZD8hlr7AZDbqkF2A2HZL18ld1gENC+P3bDeboAH0FtNxjlzxWwV4GpL6F+ijK74ehnKAFaiUOjIXfj3LuX169Q4KRCIReRIK/EGi3CoWmoQO9WG3UUzG3PnnH6JdRHIiimr58+RoehVRGPmXf1PAko/Gg+FtFeLIyfKs7f7zb9b9A2ZtTXUF/FbheWEyF0DBQ9Yd2OdE1LvSf93SH2GBEhrCI6OhEc09ahv0fNnypgZWWYKPoG/o9DYvw+SWAAAAAASUVORK5CYII="></image>
+		<view class="search-text">搜索</view>
+	</view>
+</view>

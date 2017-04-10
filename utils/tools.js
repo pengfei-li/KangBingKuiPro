@@ -1,4 +1,5 @@
 let config = require('./config.js');
+let bmap = require('../libs/bmap-wx.js');
 module.exports = {
     getUserOpenId: () => {
         try {
@@ -233,5 +234,60 @@ module.exports = {
     formatNumber: (n) => {
         n = n.toString()
         return n[1] ? n : '0' + n
+    },
+    bMapSearch: (str, callback) => {
+        var BMap = new bmap.BMapWX({
+            ak: config.baiduAK
+        });
+        var fail = function(data) {
+            console.log(data)
+        };
+        var success = function(data) {
+            // console.log(data);
+            // wxMarkerData = data.wxMarkerData;
+            callback(data.wxMarkerData);
+            // that.setData({
+            //     markers: wxMarkerData
+            // });
+            // that.setData({
+            //     latitude: wxMarkerData[0].latitude
+            // });
+            // that.setData({
+            //     longitude: wxMarkerData[0].longitude
+            // });
+        };
+        // 发起POI检索请求 
+        BMap.search({
+            query: str,
+            fail: fail,
+            success: success,
+            // 此处需要在相应路径放置图片文件 
+            iconPath: config.mapIconRed,
+            // 此处需要在相应路径放置图片文件 
+            iconTapPath: config.mapIconRed
+        });
+    },
+    bMapChangeIcon: (data, i) => {
+        var markers = [];
+        for (var j = 0; j < data.length; j++) {
+            if (j == i) {
+                // 此处需要在相应路径放置图片文件 
+                data[j].iconPath = config.mapIconBlue;
+            } else {
+                // 此处需要在相应路径放置图片文件 
+                data[j].iconPath = config.mapIconRed;
+            }
+            markers[j] = data[j];
+        }
+        return markers;
+    },
+    getSysInfo: () => {
+        try {
+            var res = wx.getSystemInfoSync()
+            return res;
+        } catch (e) {
+            //重试
+            module.exports.getSysInfo();
+        }
     }
 }

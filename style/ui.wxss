@@ -64,7 +64,9 @@
   padding: 0.5em;
 }
 
-/*ui-modal*//*ui-popup*/
+/*ui-modal*/
+
+/*ui-popup*/
 .ui-modal, .ui-popup {
   position: fixed;
   display: block;
@@ -87,33 +89,131 @@
   top: 2em;
 }
 
-
-
-
+/*ui-search*/
+.ui-search {
+  height: 45px;
+  line-height: 45px;
+  border-bottom: 1rpx solid #ccc;
+  width: 100%;
+  overflow: hidden;
+}
+.ui-sarch-panel {
+  width: 100%;
+  height: 45px;
+  line-height: 45px;
+  overflow: hidden;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+}
+.ui-sarch-panel .search-input {
+  text-indent: 10rpx;
+  border: 1rpx solid #ccc;
+  height: 60rpx;
+  margin: 10rpx 0 10rpx .5em;
+  text-align: left;
+  line-height: 60rpx;
+  border-radius: 5px;
+  background-color: #fff;
+  -webkit-box-flex: 8;
+  -webkit-flex: 8;
+  flex: 8;
+  padding-left: 10rpx;
+}
+.ui-sarch-panel .search-btn {
+  font-size: 14px;
+  padding: 0 5px;
+  margin: 10rpx .5em 10rpx 10rpx;
+  height: 60rpx;
+  text-align: center;
+  line-height: 60rpx;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  flex: 1;
+  border-color: #ccc;
+  border:none !important;
+}
+.ui-sarch-panel .search-btn::after{
+  border:none;
+}
+.ui-search-icon {
+  border: 1rpx solid #ccc;
+  height: 60rpx;
+  margin: 10rpx .5em;
+  text-align: center;
+  line-height: 60rpx;
+  border-radius: 5px;
+  background-color: #fff;
+}
+.ui-search-icon .search-icon {
+  width: 45rpx;
+  height: 45rpx;
+  vertical-align: middle;
+}
+.ui-search-icon .search-text {
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 14px;
+  color: #8E8E8E;
+  margin-left: 5rpx;
+}
+.ui-search-tip{
+  width: 96%;
+  height: auto;
+  position: absolute;
+  top: 92rpx;
+  left: 0;
+  border-bottom: 1rpx solid #ccc;
+  background-color: #fff;
+  padding:2%;
+  z-index: 100;
+}
+.ui-search-tip .title{
+  display: block;
+  padding: 10px 5px 5px 10px;
+  font-size: 12px;
+  text-align: center;
+}
+.ui-search-tip .con{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: .3em 0;
+  padding-bottom: .5em;
+}
+.ui-search-tip .item{
+  flex: 0 0 43%;
+  font-size: 14px;
+  text-align: center;
+  border: 1rpx solid #eee;
+  margin: 1%;
+  padding: 1% 2%;
+  border-radius: 5px;
+}
 /*ui-btn*/
 
 /*.ui-btn,
 .ui-btn-primary{
-    background-color: #eee;
-    text-align: center;
-    margin: .5em;
-    border-radius: .3em;
-    height: 2.4em;
-    line-height: 2.4em;
-    font-size: 1em;
-    display: block;
-    color: #000;
-    box-sizing: border-box;
+background-color: #eee;
+text-align: center;
+margin: .5em;
+border-radius: .3em;
+height: 2.4em;
+line-height: 2.4em;
+font-size: 1em;
+display: block;
+color: #000;
+box-sizing: border-box;
 }
 .ui-btn{
-    border: 1px solid rgba(0, 0, 0, 0.1);
+border: 1px solid rgba(0, 0, 0, 0.1);
 }
 .ui-btn:active{
-    background-color: #ccc;
+background-color: #ccc;
 }
 .ui-btn-primary{
-    background-color: #1AAD19;
-    color: #fff;
+background-color: #1AAD19;
+color: #fff;
 }*/
 
 button {

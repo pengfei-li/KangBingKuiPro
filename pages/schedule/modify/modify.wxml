@@ -14,13 +14,13 @@
 				    <view class="picker">{{startTime}}</view>
 				</picker>
 				<view class="line">-</view>
-				<picker class="end" mode="time" name="end" value="{{endTime}}" start="00:00" end="23:59" bindchange="endTimeChange">
+				<picker class="end" mode="time" name="end" value="{{endTime}}" start="{{endStart}}" end="23:59" bindchange="endTimeChange">
 				    <view class="picker">{{endTime}}</view>
 				</picker>
 			</view>
 		    <view class="schedule-desc">
 		    	<view class="label">日程描述:</view>
-		    	<textarea bindblur="bindTextAreaBlur" value="{{desc}}" name="desc" auto-height placeholder="在这里添加具体的描述信息..." />
+		    	<textarea value="{{desc}}" name="desc" auto-height placeholder="在这里添加具体的描述信息..." />
 		    </view>
 			
 	    </view>

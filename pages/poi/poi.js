@@ -1,106 +1,95 @@
 // 引用百度地图微信小程序JSAPI模块 
 let bmap = require('../../libs/bmap-wx.js');
 let config = require('../../utils/config');
-var wxMarkerData = [];
+let tools = require('../../utils/tools');
 Page({
     data: {
         markers: [],
         latitude: '',
         longitude: '',
-        placeData: {},
-        sugData: ''
-    },
-    makertap: function(e) {
-        var that = this;
-        var id = e.markerId;
-        that.showSearchInfo(wxMarkerData, id);
-        that.changeMarkerColor(wxMarkerData, id);
+        isShow: false,
+        resultHeight: 0,
+        swiperIndex: 0,
+        uiSearchTipDefaultData: ['酒店', '美食', '银行', '超市', 'KTV', '医院']
     },
     onLoad: function() {
-        var that = this;
-        // 新建百度地图对象 
-        var BMap = new bmap.BMapWX({
-            ak: config.baiduAK
-        });
-        var fail = function(data) {
-            console.log(data)
-        };
-        var success = function(data) {
-            wxMarkerData = data.wxMarkerData;
-            that.setData({
-                markers: wxMarkerData
-            });
-            that.setData({
-                latitude: wxMarkerData[0].latitude
-            });
-            that.setData({
-                longitude: wxMarkerData[0].longitude
-            });
-        };
-        // 发起POI检索请求 
-        BMap.search({
-            "query": '',
-            fail: fail,
-            success: success,
-            // 此处需要在相应路径放置图片文件 
-            iconPath: '../../src/img/marker_red.png',
-            // 此处需要在相应路径放置图片文件 
-            iconTapPath: '../../src/img/marker_red.png'
-        });
+        var _ = this
+        _.setResultHeight();
     },
-    showSearchInfo: function(data, i) {
-        var that = this;
-        that.setData({
-            placeData: {
-                title: '名称：' + data[i].title + '\n',
-                address: '地址：' + data[i].address + '\n',
-                telephone: '电话：' + data[i].telephone
-            }
-        });
-    },
-    changeMarkerColor: function(data, i) {
-        var that = this;
-        var markers = [];
-        for (var j = 0; j < data.length; j++) {
-            if (j == i) {
-                // 此处需要在相应路径放置图片文件 
-                data[j].iconPath = "../../src/img/marker_yellow.png";
-            } else {
-                // 此处需要在相应路径放置图片文件 
-                data[j].iconPath = "../../src/img/marker_red.png";
-            }
-            markers[j] = data[j];
-        }
-        that.setData({
-            markers: markers
-        });
-    },
-    // 绑定input输入 
-    bindKeyInput: function(e) {
-        var that = this;
-        // 新建百度地图对象 
-        var BMap = new bmap.BMapWX({
-            ak: config.baiduAK
-        });
-        var fail = function(data) {
-            console.log(data)
-        };
-        var success = function(data) {
-                var sugData = '';
-                for (var i = 0; i < data.result.length; i++) {
-                    sugData = sugData + data.result[i].name + '\n';
-                }
-                that.setData({
-                    sugData: sugData
+    onShow: function() {
+        let _ = this;
+        wx.getLocation({
+            type: 'wgs84',
+            success: function(res) {
+                _.setData({
+                    latitude: res.latitude
+                });
+                _.setData({
+                    longitude: res.longitude
                 });
             }
-            // 发起suggestion检索请求 
-        BMap.suggestion({
-            query: e.detail.value,
-            region: '北京',
-            city_limit: true,
-            fail: fail,
-            success: success
         });
+    },
+    selectLocation: function(e) {
+        //选中地图上的点，设置滚动的显示为当前坐标的信息
+        var _ = this;
+        var id = e.markerId;
+        _.setData({
+            swiperIndex: id,
+            markers: tools.bMapChangeIcon(_.data.markers, id)
+        });
+    },
+    selectChange: function(e) {
+        //滑动改变选项，改变地图中的标注
+        let _ = this;
+        let _index = e.detail.current;
+        _.setData({
+            markers: tools.bMapChangeIcon(_.data.markers, _index)
+        });
+    },
+    searchFocus: function() {
+        this.setData({
+            isShow: true
+        });
+    },
+    cancleSearch: function() {
+        this.setData({
+            isShow: false
+        });
+    },
+    setResultHeight: function() {
+        let _ = this;
+        let _heigt = tools.getSysInfo().windowHeight - 346;
+        console.log(_heigt);
+        console.log(tools.getSysInfo().windowHeight);
+        _.setData({
+            resultHeight: _heigt
+        });
+    },
+    hotSearch: function(e) {
+        console.log(e);
+        let _val = e.currentTarget.dataset.key;
+        this.__search(_val);
+    },
+    searchInfo: function(e) {
+        let _val = e.detail.value;
+        this.__search(_val);
+    },
+    __search: function(str) {
+        var _ = this
+        tools.bMapSearch(str, (data) => {
+            _.cancleSearch();
+            console.log(data);
+            _.setData({
+                markers: data
+            });
+            _.setData({
+                latitude: data[0].latitude
+            });
+            _.setData({
+                longitude: data[0].longitude
+            });
+        });
+
     }
 })
