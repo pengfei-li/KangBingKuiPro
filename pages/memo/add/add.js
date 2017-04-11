@@ -2,7 +2,9 @@
 let tools = require('../../../utils/tools');
 let util = require('../util.js');
 Page({
-    data: {},
+    data: {
+        isFocus: false
+    },
     addOneMemo: function(e) {
         let _ = this;
         let _title = e.detail.value.title;
@@ -16,8 +18,8 @@ Page({
             }
             util.addOneItem(_item, (data) => {
                 //成功返回
-                tools.back();
                 tools.showToast('添加成功');
+                tools.backDelay();
             });
         } else {
             tools.warnDialog('备忘名不能为空');
@@ -25,5 +27,10 @@ Page({
     },
     back: function() {
         tools.back();
+    },
+    next: function() {
+        this.setData({
+            isFocus: true
+        });
     }
 })

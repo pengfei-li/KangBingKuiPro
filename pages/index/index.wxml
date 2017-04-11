@@ -57,20 +57,19 @@
             <button type="primary" bindtap="tapTo2048">2048</button>
           </view>
           <view class="ui-btn ui-flex-item">
-            
           </view>
         </view>
       </view>
     </view>
     <view class="ui-panel">
-      <view class="panel-title">内容管理</view>
+      <view class="panel-title">关于</view>
       <view class="panel-content">
         <view class="ui-flex">
           <view class="ui-btn ui-flex-item">
-            <button type="primary" bindtap="clearAllMemo">清除备忘录</button>
+            <button type="primary" bindtap="tapToContentManage">内容管理</button>
           </view>
           <view class="ui-btn ui-flex-item">
-            
+            <button type="primary" bindtap="tapToRecommend">推荐功能</button>
           </view>
         </view>
       </view>

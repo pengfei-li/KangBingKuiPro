@@ -3,10 +3,10 @@
 	    <view class="ui-input-list">
 		    <view class="ui-input-line">
 		        <view class="label">备忘名:</view>
-		        <input class="input-value" name="title" maxlength="20" placeholder="备忘名"/>
+		        <input class="input-value" confirm-type="next" bindconfirm="next" name="title" maxlength="20" placeholder="备忘名"/>
 		    </view>
 		    <view class="ui-input-line">
-		    	<textarea name="content" auto-height placeholder="输入备忘内容..." />
+		    	<textarea name="content" focus="{{isFocus}}" auto-height placeholder="输入备忘内容..." />
 		    </view>
 	    </view>
 	    <button type="primary" form-type="reset">重置</button>

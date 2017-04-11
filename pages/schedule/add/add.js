@@ -47,8 +47,8 @@ Page({
                 endTime: _end
             }
             util.addOneItem(_item, (data) => {
-                //成功返回
-                tools.back();
+                tools.showToast('添加成功');
+                tools.backDelay();
                 //发送模板消息
                 let _openId = tools.getUserOpenId();
                 let _formId = e.detail.formId;
@@ -94,8 +94,6 @@ Page({
             }
         };
         let _url = config.WXTemplateUrl + '?access_token=' + tools.getAccessToken();
-        tools.post(_url, _opts, (res) => {
-            tools.showToast('添加成功');
-        });
+        tools.post(_url, _opts, (res) => {});
     }
 })

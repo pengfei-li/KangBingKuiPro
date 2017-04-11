@@ -8,15 +8,12 @@
         "pages/memo/add/add",
         "pages/memo/modify/modify",
         "pages/QRcode/QRcode",
-        "pages/poi/poi",
-        "pages/poi/scenic/scenic",
-        "pages/poi/food/food",
-        "pages/poi/entertainment/entertainment",
         "pages/around/around",
-        "pages/tabs/tabs",
         "pages/schedule/schedule",
         "pages/schedule/add/add",
-        "pages/schedule/modify/modify"
+        "pages/schedule/modify/modify",
+        "pages/managecon/managecon",
+        "pages/recommend/recommend"
     ],
     "window": {
         "backgroundTextStyle": "black",

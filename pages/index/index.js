@@ -2,7 +2,7 @@
 //获取应用实例
 var app = getApp();
 let tools = require('../../utils/tools');
-let config = require('../../utils/config')
+let config = require('../../utils/config');
 Page({
     data: {
         userInfo: config.userInfo
@@ -32,15 +32,10 @@ Page({
     tapToAround: () => {
         tools.navTo('around');
     },
-    clearAllMemo: () => {
-        wx.removeStorage({
-            key: 'kangbingkui_pro_memo',
-            success: function() {
-                tools.showToast('清除成功!')
-            }
-        });
+    tapToContentManage: () => {
+        tools.navTo('managecon');
     },
-    onLoad: function() {
-
+    tapToRecommend: () => {
+        tools.navTo('recommend');
     }
 })

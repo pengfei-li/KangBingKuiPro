@@ -29,11 +29,12 @@ module.exports = {
                 'content-type': 'application/json'
             },
             success: function(res) {
-                callback(res.data);
+                if (typeof(callback) == "function") callback(res.data);
             }
         });
     },
     ApiGet: (url, data, callback) => {
+        module.exports.loading('加载中...');
         wx.request({
             url: url,
             data: data,
@@ -44,11 +45,13 @@ module.exports = {
                 'X-APICloud-AppKey': config.APICloud_AppKey
             },
             success: function(res) {
-                callback(res.data);
+                module.exports.loadingEnd();
+                if (typeof(callback) == "function") callback(res.data);
             }
         });
     },
     ApiPost: (url, data, callback) => {
+        module.exports.loading('提交中...');
         wx.request({
             url: url,
             data: data,
@@ -59,13 +62,14 @@ module.exports = {
                 'X-APICloud-AppKey': config.APICloud_AppKey
             },
             success: function(res) {
-                callback(res.data);
+                module.exports.loadingEnd();
+                if (typeof(callback) == "function") callback(res.data);
             }
         });
     },
     ApiCloudLogin: (url, _data, callback) => {
         module.exports.ApiPost(url, _data, (data) => {
-            callback(data);
+            if (typeof(callback) == "function") callback(data);
         });
         // wx.request({
         //     url: 'https://d.apicloud.com/mcm/api/user/login',
@@ -90,20 +94,20 @@ module.exports = {
     },
     ApiCloudPost: (url, _data, callback) => {
         module.exports.ApiPost(url, _data, (data) => {
-            callback(data);
+            if (typeof(callback) == "function") callback(data);
         });
     },
     ApiCloudGet: (url, filter, callback) => {
         url = url + '?filter=' + encodeURIComponent(JSON.stringify(filter));
         module.exports.ApiGet(url, '', (data) => {
-            callback(data);
+            if (typeof(callback) == "function") callback(data);
         });
     },
     ApiCloudPut: (url, id, _data, callback) => {
         url = url + '/' + id;
         _data._method = "PUT";
         module.exports.ApiPost(url, _data, (data) => {
-            callback(data);
+            if (typeof(callback) == "function") callback(data);
         });
     },
     ApiCloudDelete: (url, id, callback) => {
@@ -112,7 +116,28 @@ module.exports = {
             "_method": "DELETE"
         };
         module.exports.ApiPost(url, _data, (data) => {
-            callback(data);
+            if (typeof(callback) == "function") callback(data);
+        });
+    },
+    ApiCloudBatch: (data, callback) => {
+        let url = 'https://d.apicloud.com/mcm/api/batch';
+        let _data = {
+            "requests": data
+        };
+        module.exports.ApiPost(url, _data, (data) => {
+            if (typeof(callback) == "function") callback(data);
+        });
+    },
+    ApiCloudDeleteUserAllData: (name, ids, callback) => {
+        let _opts = [];
+        for (let i = 0; i < ids.length; i++) {
+            _opts.push({
+                "method": "DELETE",
+                "path": "https://d.apicloud.com/mcm/api/" + name + '/' + ids[i].id
+            });
+        }
+        module.exports.ApiCloudBatch(_opts, (data) => {
+            if (typeof(callback) == "function") callback(data);
         });
     },
     post: (url, data, callback) => {
@@ -124,7 +149,7 @@ module.exports = {
                 'content-type': 'application/json'
             },
             success: function(res) {
-                callback(res.data);
+                if (typeof(callback) == "function") callback(res.data);
             }
         });
     },
@@ -152,7 +177,7 @@ module.exports = {
             showCancel: false,
             success: function(res) {
                 if (res.confirm) {
-                    if (callback) callback();
+                    if (typeof(callback) == "function") callback();
                 }
             }
         })
@@ -164,7 +189,18 @@ module.exports = {
             showCancel: false,
             success: function(res) {
                 if (res.confirm) {
-                    if (callback) callback();
+                    if (typeof(callback) == "function") callback();
+                }
+            }
+        })
+    },
+    tipDialog: (msg, callback) => {
+        wx.showModal({
+            title: '确认',
+            content: msg,
+            success: function(res) {
+                if (res.confirm) {
+                    if (typeof(callback) == "function") callback();
                 }
             }
         })
@@ -176,6 +212,11 @@ module.exports = {
     },
     back: () => {
         wx.navigateBack()
+    },
+    backDelay: () => {
+        setTimeout(() => {
+            wx.navigateBack()
+        }, 1000);
     },
     modalOpen: () => {
         //定义动画
@@ -236,14 +277,17 @@ module.exports = {
         return n[1] ? n : '0' + n
     },
     bMapSearch: (str, callback) => {
+        module.exports.loading('查询中...');
         var BMap = new bmap.BMapWX({
             ak: config.baiduAK
         });
         var fail = function(data) {
-            console.log(data)
+            module.exports.errorDialog('查询出错，请重试！');
+            module.exports.loadingEnd();
         };
         var success = function(data) {
             callback(data.wxMarkerData);
+            module.exports.loadingEnd();
         };
         // 发起POI检索请求 
         BMap.search({

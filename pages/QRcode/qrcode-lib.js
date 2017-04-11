@@ -777,7 +777,6 @@
 
             ctx.setStrokeStyle('#cccccc')
             ctx.strokeRect(_x, _y, _w, _w);
-            console.log(roundedSize);
             //添加下标
             ctx.setFontSize(15);
             ctx.setTextAlign('center')

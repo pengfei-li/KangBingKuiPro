@@ -20,7 +20,7 @@ App({
                         //保存openid
                         wx.setStorage({
                             key: 'userOpenId',
-                            data: SHA1(res.openid)
+                            data: res.openid
                         });
                     });
 

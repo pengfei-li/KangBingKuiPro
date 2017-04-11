@@ -1,24 +1,8 @@
-// pages/memo/memo.js
 var util = require('./util.js');
 var tools = require('../../utils/tools.js');
 Page({
     data: {
         memo: []
-    },
-    onLoad: function(options) {
-        let _ = this;
-        util.getAllData((data) => {
-            _.setData({
-                memo: data
-            });
-        });
-    },
-    updateMemoData: function(_memo) {
-        this.setData({
-            memo: _memo
-        });
-        //更新localStorage
-        utils.updateData(_memo);
     },
     setState: function(e) {
         let _ = this;
@@ -123,13 +107,6 @@ Page({
         });
     },
     onShow: function() {
-        // 页面显示
         this.refreshData();
-    },
-    onHide: function() {
-        // 页面隐藏
-    },
-    onUnload: function() {
-        // 页面关闭
     }
 })

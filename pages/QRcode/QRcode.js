@@ -25,18 +25,6 @@ Page({
             placeholder: _str
         })
     },
-    onReady: function() {
-        // 页面渲染完成
-    },
-    onShow: function() {
-        // 页面显示
-    },
-    onHide: function() {
-        // 页面隐藏
-    },
-    onUnload: function() {
-        // 页面关闭
-    },
     //适配不同屏幕大小的canvas
     setCanvasSize: function() {
         var size = {};
@@ -47,10 +35,7 @@ Page({
             var height = width; //canvas画布为正方形
             size.w = width;
             size.h = height;
-        } catch (e) {
-            // Do something when catch error
-            console.log("获取设备信息失败" + e);
-        }
+        } catch (e) {}
         return size;
     },
     createQrCode: function(url, canvasId, cavW, cavH) {
@@ -75,9 +60,7 @@ Page({
                     imagePath: tempFilePath,
                 });
             },
-            fail: function(res) {
-                console.log(res);
-            }
+            fail: function(res) {}
         });
     },
     //点击图片进行预览，长按保存分享图片
@@ -85,10 +68,7 @@ Page({
         var img = this.data.imagePath
         wx.getImageInfo({
             src: img,
-            success: function(res) {
-                console.log(res.width)
-                console.log(res.height)
-            }
+            success: function(res) {}
         })
         wx.previewImage({
             current: img, // 当前显示图片的http链接

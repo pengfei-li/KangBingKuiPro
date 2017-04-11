@@ -55,5 +55,24 @@ module.exports = {
         tools.ApiCloudGet(URL, filter, (data) => {
             callback(data);
         });
+    },
+    getAllDataId: (callback) => {
+        let filter = {
+            "where": {
+                "wx_openid": tools.getUserOpenId()
+            },
+            "fields": {
+                "title": false,
+                "state": false,
+                "content": false,
+                "date": false,
+                "wx_openid": false,
+                "createdAt": false,
+                "updatedAt": false
+            }
+        };
+        tools.ApiCloudGet(URL, filter, (data) => {
+            callback(data);
+        });
     }
 }

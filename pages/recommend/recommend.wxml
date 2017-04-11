@@ -1,0 +1,19 @@
+<view class="page">
+	<form report-submit="true" bindsubmit="recommend">
+	    <view class="ui-input-list">
+		    <view class="ui-input-line">
+		        <view class="label">名称:</view>
+		        <input class="input-value" name="name" maxlength="20" placeholder="名称"/>
+		    </view>
+		    <view class="ui-input-line">
+		    	<view class="label">描述:</view>
+		    	<textarea name="desc" auto-height maxlength="-1" placeholder="简单的描述一下是什么..." />
+		    </view>
+	    </view>
+	    <button type="primary" form-type="reset">重置</button>
+	    <button type="primary" bindtap="back">取消</button>
+	    <button type="primary" form-type="submit">推荐</button>
+  	</form>
+  	<text class="tip-bottom">感谢你的推荐，说不定下个功能就是你推荐的功能哟~~</text>
+</view>
+
