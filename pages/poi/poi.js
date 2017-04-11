@@ -59,7 +59,7 @@ Page({
     },
     setResultHeight: function() {
         let _ = this;
-        let _heigt = tools.getSysInfo().windowHeight - 346;
+        let _heigt = tools.getSysInfo().windowHeight - 356;
         console.log(_heigt);
         console.log(tools.getSysInfo().windowHeight);
         _.setData({

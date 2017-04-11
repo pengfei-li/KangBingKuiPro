@@ -1,14 +1,3 @@
-<!-- <import src="../../component/wxSearch/wxSearch.wxml"/>
-<view class="wxSearch-section">
-		<view class="wxSearch-pancel">
-			    <input bindinput="wxSearchInput" bindfocus="wxSerchFocus" confirm-type="search" value="{{wxSearchData.value}}" bindblur="wxSearchBlur" class="wxSearch-input" placeholder="输入关键字:美食、酒店、KTV..." bindconfirm="wxSearchFn" />
-			    <button class="wxSearch-button" bindtap="wxSearchFn" size="mini" plain="true">搜索</button>
-		</view>
-	</view>
-	<template is="wxSearch" data="{{wxSearchData}}"/> -->
-
-
-
 <view class="page">
 	<view class="ui-search">
 		<view class="ui-sarch-panel" style="display:{{isShow ? 'flex':'none'}};">
@@ -33,12 +22,19 @@
 			<block wx:if="{{markers.length == 0}}">
 				<swiper-item>
 			      	<view class="no-content">尚未查询到任何数据</view>
+			      	<!-- <view class="result-item">
+			    		<view class="name">星际酒店</view>
+			    		<view class="address">地址：杭州市文一西路228号</view>
+			    		<view class="tel">电话：（0571）67111111</view>
+			    	</view> -->
 			    </swiper-item>
 			</block>
 			<block wx:for="{{markers}}" data-index="{{index}}" wx:key="{{index}}">
 			    <swiper-item>
 			    	<view class="result-item">
-			    		{{item.title}}
+			    		<view class="name">{{item.title}}</view>
+			    		<view class="address">地址: {{item.address}}</view>
+			    		<view class="tel">电话: {{item.telephone ? item.telephone:'暂无'}}</view>
 			    	</view>
 			    </swiper-item>
 			</block>

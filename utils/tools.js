@@ -243,18 +243,7 @@ module.exports = {
             console.log(data)
         };
         var success = function(data) {
-            // console.log(data);
-            // wxMarkerData = data.wxMarkerData;
             callback(data.wxMarkerData);
-            // that.setData({
-            //     markers: wxMarkerData
-            // });
-            // that.setData({
-            //     latitude: wxMarkerData[0].latitude
-            // });
-            // that.setData({
-            //     longitude: wxMarkerData[0].longitude
-            // });
         };
         // 发起POI检索请求 
         BMap.search({

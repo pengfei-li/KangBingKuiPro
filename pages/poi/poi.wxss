@@ -26,9 +26,17 @@
 	line-height: 100px;
 }
 .result-item{
-	margin: 5% 5%;
-	height: 90%;
-	width: 90%;
+	margin: 5%;
+	height: 70%;
+	width: 80%;
+	padding: 5%;
 	border:1rpx solid #eee;
+	background-color: #fff;
 	box-shadow: 0 0 20rpx rgba(120, 120, 120, .3);
+	border-radius: 20rpx;
+}
+.result-item .name{
+	line-height: 90rpx;
+	font-size: 16px;
+	font-weight: bold;
 }
