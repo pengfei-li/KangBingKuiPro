@@ -1,10 +1,14 @@
 <!--备忘录-->
 <view class="page">
-  <view wx:for="{{memo}}" wx:key="index">
+  <block wx:if="{{memo.length == 0}}">
+    <view class="no-content">尚未查询到任何数据</view>
+  </block>
+  <block wx:else>
+    <view wx:for="{{memo}}" wx:key="index">
       <!--正常-->
-      <view wx:if="{{item.state == 0}}" class="memo-card" data-index="{{index}}" bindtap="showDetail">
-        <view class="memo-name">{{item.name}}
-          <image bindtap="setState" data-index="{{index}}" class="state-icon" src="../../src/icon/default.png"></image>
+      <view wx:if="{{item.state == 0}}" class="memo-card" data-index="{{index}}">
+        <view class="memo-name">{{item.title}}
+          <image bindtap="setState" data-id="{{item.id}}" class="state-icon" src="../../src/icon/default.png"></image>
         </view>
         <view class="memo-time">
           {{item.date}}
@@ -14,9 +18,9 @@
         </view>
       </view>
       <!--完成-->
-      <view wx:elif="{{item.state == 3}}" class="memo-card success" data-index="{{index}}" bindtap="showDetail">
-        <view class="memo-name">{{item.name}}
-          <image class="state-icon" bindtap="setState" data-index="{{index}}" src="../../src/icon/success.png"></image>
+      <view wx:elif="{{item.state == 3}}" class="memo-card success" data-index="{{index}}">
+        <view class="memo-name">{{item.title}}
+          <image class="state-icon" bindtap="setState" data-id="{{item.id}}" src="../../src/icon/success.png"></image>
         </view>
         <view class="memo-time">{{item.date}}</view>
         <view class="memo-content">
@@ -24,9 +28,9 @@
         </view>
       </view>
       <!--进行中-->
-      <view wx:elif="{{item.state == 1}}" class="memo-card realtime" data-index="{{index}}" bindtap="showDetail">
-        <view class="memo-name">{{item.name}}
-          <image class="state-icon" bindtap="setState" data-index="{{index}}" src="../../src/icon/realtime.png"></image>
+      <view wx:elif="{{item.state == 1}}" class="memo-card realtime" data-index="{{index}}">
+        <view class="memo-name">{{item.title}}
+          <image class="state-icon" bindtap="setState" data-id="{{item.id}}" src="../../src/icon/realtime.png"></image>
         </view>
         <view class="memo-time">{{item.date}}</view>
         <view class="memo-content">
@@ -34,9 +38,9 @@
         </view>
       </view>
       <!--超时-->
-      <view wx:else class="memo-card outtime" data-index="{{index}}" bindtap="showDetail">
-        <view class="memo-name">{{item.name}}
-          <image class="state-icon" bindtap="setState" data-index="{{index}}" src="../../src/icon/outtime.png"></image>
+      <view wx:else class="memo-card outtime" data-index="{{index}}">
+        <view class="memo-name">{{item.title}}
+          <image class="state-icon" bindtap="setState" data-id="{{item.id}}" src="../../src/icon/outtime.png"></image>
         </view>
         <view class="memo-time">{{item.date}}</view>
         <view class="memo-content">
@@ -44,29 +48,9 @@
         </view>
     </view>
   </view>
-  <button type="primary" bindtap="openAddModal">增加备忘录</button>
   <text class="tip-bottom">你可以在内容管理中清空所有的备忘录</text>
+  </block> 
+  <view class="ui-add-btn" bindtap="addOneMemo">
+    <image class="ui-add-icon" src="../../src/icon/add.png"></image>
+  </view> 
 </view>
-<view animation="{{modalAnimate}}" class="ui-modal">
-  <image class="ui-modal-close" bindtap="closeAddModal" src="../../src/icon/close.png"></image>
-  <form class="ui-modal-form" report-submit="true" bindsubmit="addOneMemo" bindreset="formReset">
-    <view class="memo-add">
-      <view class="memo-title">
-        <view class="label">备忘名:</view>
-        <input class="memo-value" name="title" maxlength="12" placeholder="备忘名"/>
-      </view>
-      <view class="memo-add-content">
-        <textarea class="memo-con" name="content" placeholder="输入备忘内容..." fixed="true" maxlength="240" cursor-spacing="5" />
-      </view>
-    </view>
-    <button type="primary" form-type="reset">重置</button>
-    <button type="primary" form-type="submit">增加备忘录</button>
-  </form>
-</view>
-<!-- <view animation="{{detailAnimate}}" bindtap="closeDetail" class="ui-show-detail {{detailStyle}}">
-  <view class="content">
-      <view class="title">{{detalItem.name}}</view>
-      <view class="date">{{detalItem.date}}</view>
-      <view class="con"><text>{{detalItem.content}}</text></view>
-  </view>
-</view> -->

@@ -191,31 +191,56 @@
   border-radius: 5px;
 }
 /*ui-btn*/
-
-/*.ui-btn,
-.ui-btn-primary{
-background-color: #eee;
-text-align: center;
-margin: .5em;
-border-radius: .3em;
-height: 2.4em;
-line-height: 2.4em;
-font-size: 1em;
-display: block;
-color: #000;
-box-sizing: border-box;
+.ui-add-btn{
+  width: 120rpx;
+  height: 120rpx;
+  display: block;
+  position: fixed;
+  right: 40rpx;
+  bottom: 40rpx;
+  background-color: #fff;
+  border-radius: 60rpx;
+  border:1rpx solid #eee;
+  box-shadow: 0 0 20rpx rgba(120, 120, 120, .3);
 }
-.ui-btn{
-border: 1px solid rgba(0, 0, 0, 0.1);
+.ui-add-icon{
+  width: 80rpx;
+  height: 80rpx;
+  display: block;
+  margin: 20rpx;
 }
-.ui-btn:active{
-background-color: #ccc;
+/*ui-input-item*/
+.ui-input-list{
+  padding: .5em;
 }
-.ui-btn-primary{
-background-color: #1AAD19;
-color: #fff;
-}*/
-
+.ui-input-line{
+  height: auto;
+  line-height: 80rpx;
+  border: 1rpx solid #eee;
+  background-color: #fff;
+  border-radius: 10rpx;
+  margin: .6em 0;
+  padding: 10rpx;
+  box-shadow: 0 0 20rpx rgba(120, 120, 120, .2);
+  overflow: hidden;
+}
+.ui-input-line .label {
+  width: 30%;
+  height: 80rpx;
+  float: left;
+  text-align: center;
+}
+.ui-input-line .input-value {
+  width: 70%;
+  height: 80rpx;
+  line-height: 80rpx;
+}
+.ui-input-line textarea {
+  width: 90%;
+  padding: 5%;
+  float: left;
+}
+/*other*/
 button {
   margin: 0.3em;
 }

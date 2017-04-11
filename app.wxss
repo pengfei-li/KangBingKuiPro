@@ -26,3 +26,11 @@ page{
 	font-size: 30rpx;
 	font-weight: 700;
 }
+.no-content{
+	height: 100%;
+	width: 100%;
+	font-size: 14px;
+	color: #ccc;
+	text-align: center;
+	line-height: 100px;
+}

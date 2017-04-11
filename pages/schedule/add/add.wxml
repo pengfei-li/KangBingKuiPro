@@ -1,14 +1,14 @@
 <view class="page">
 	<form report-submit="true" bindsubmit="addOneSchedule" bindreset="formReset">
-	    <view class="schedule-add">
-		    <view class="schedule-title">
+	    <view class="ui-input-list">
+		    <view class="ui-input-line">
 		        <view class="label">日程主题:</view>
-		        <input class="schedule-value" name="title" maxlength="20" placeholder="主题名"/>
+		        <input class="input-value" name="title" maxlength="20" placeholder="主题名"/>
 		    </view>
-		    <picker class="schedule-date"  mode="date" name="date" value="{{date}}" start="{{interval_date.start}}" end="interval_date.end" bindchange="bindDateChange">
+		    <picker class="ui-input-line"  mode="date" name="date" value="{{date}}" start="{{interval_date.start}}" end="interval_date.end" bindchange="bindDateChange">
 			    <view class="label">日程日期:</view><view class="picker">{{date}}</view>
 			</picker>
-			<view class="schedule-time">
+			<view class="ui-input-line">
 				<view class="label">日程时间:</view>
 				<picker class="start" mode="time" name="start" value="{{startTime}}" start="00:00" end="23:59" bindchange="startTimeChange">
 				    <view class="picker">{{startTime}}</view>
@@ -18,7 +18,7 @@
 				    <view class="picker">{{endTime}}</view>
 				</picker>
 			</view>
-		    <view class="schedule-desc">
+		    <view class="ui-input-line">
 		    	<view class="label">日程描述:</view>
 		    	<textarea name="desc" auto-height placeholder="在这里添加具体的描述信息..." />
 		    </view>		

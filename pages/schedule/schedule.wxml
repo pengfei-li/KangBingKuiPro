@@ -1,22 +1,28 @@
 <view class="page">
-  	<view wx:for="{{schedule}}" wx:key="{{id}}" data-id="{{item.id}}" bindlongtap="operateItem" class="sche-card">
+  <block wx:if="{{schedule.length == 0}}">
+    <view class="no-content">尚未查询到任何数据</view>
+  </block>
+  <block wx:else>
+    <view wx:for="{{schedule}}" wx:key="{{id}}" data-id="{{item.id}}" bindlongtap="operateItem" class="sche-card">
     <!-- //状态0：正常 1：进行中  2：过时  3：完成 -->
-  		<view wx:if="{{item.state == 0}}" class="sche-state"></view>
+      <view wx:if="{{item.state == 0}}" class="sche-state"></view>
       <view wx:elif="{{item.state == 1}}" class="sche-state realtime"></view>
       <view wx:elif="{{item.state == 2}}" class="sche-state outtime"></view>
       <view wx:else class="sche-state success"></view>
-  		<view class="title">{{item.title}}</view>
-  		<view class="time">
-  			<view class="date">{{item.date}}</view>
-  			<view class="time-h-m">
-  				<text class="left">{{item.startTime}}</text>
-  				<text class="center">-</text>
-  				<text class="right">{{item.endTime}}</text>
-  			</view>
-  		</view>
-  		<view class="desc">{{item.desc}}</view>
-  	</view>
-    <view class="add-btn" bindtap="addOneSchedule">
-      <image class="add-icon" src="../../src/icon/add.png"></image>
+      <view class="title">{{item.title}}</view>
+      <view class="time">
+        <view class="date">{{item.date}}</view>
+        <view class="time-h-m">
+          <text class="left">{{item.startTime}}</text>
+          <text class="center">-</text>
+          <text class="right">{{item.endTime}}</text>
+        </view>
+      </view>
+      <view class="desc">{{item.desc}}</view>
     </view>
+    <text class="tip-bottom">你可以在内容管理清除所有的日程</text>
+  </block>
+    <view class="ui-add-btn" bindtap="addOneSchedule">
+      <image class="ui-add-icon" src="../../src/icon/add.png"></image>
+    </view> 
 </view>

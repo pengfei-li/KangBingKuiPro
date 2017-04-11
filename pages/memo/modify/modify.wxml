@@ -1,0 +1,16 @@
+<view class="page">
+	<form report-submit="true" bindsubmit="modifyOneMemo">
+	    <view class="ui-input-list">
+		    <view class="ui-input-line">
+		        <view class="label">备忘名:</view>
+		        <input class="input-value" name="title" value="{{memoItem.title}}" maxlength="20" placeholder="备忘名"/>
+		    </view>
+		    <view class="ui-input-line">
+		    	<textarea name="content" auto-height value="{{memoItem.content}}" placeholder="输入备忘内容..." />
+		    </view>		
+	    </view>
+	    <button type="primary" form-type="reset">重置</button>
+	    <button type="primary" bindtap="back">取消</button>
+	    <button type="primary" form-type="submit">确认修改</button>
+  	</form>
+</view>

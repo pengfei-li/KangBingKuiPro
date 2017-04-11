@@ -5,6 +5,8 @@
         "pages/weather/weather",
         "pages/calc/calc",
         "pages/memo/memo",
+        "pages/memo/add/add",
+        "pages/memo/modify/modify",
         "pages/QRcode/QRcode",
         "pages/poi/poi",
         "pages/poi/scenic/scenic",

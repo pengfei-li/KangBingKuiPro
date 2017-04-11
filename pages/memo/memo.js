@@ -1,20 +1,15 @@
 // pages/memo/memo.js
-var utils = require('./utils.js');
+var util = require('./util.js');
 var tools = require('../../utils/tools.js');
 Page({
     data: {
-        memo: [],
-        modalAnimate: {},
-        detailAnimate: {},
-        detalItem: {},
-        detailStyle: ''
+        memo: []
     },
     onLoad: function(options) {
-        // 页面初始化 options为页面跳转所带来的参数
         let _ = this;
-        utils.getData((_memo) => {
+        util.getAllData((data) => {
             _.setData({
-                memo: _memo
+                memo: data
             });
         });
     },
@@ -26,20 +21,26 @@ Page({
         utils.updateData(_memo);
     },
     setState: function(e) {
-        let _ = this,
-            index = e.target.dataset.index;
-        let _memo = _.data.memo;
+        let _ = this;
+        let _id = e.target.dataset.id;
         wx.showActionSheet({
-            itemList: ['进行中', '超时', '完成', '删除'],
+            itemList: ['进行中', '超时', '完成', '修改', '删除'],
             success: function(res) {
                 let _seetIndex = res.tapIndex;
-                if (_seetIndex == 3) {
-                    //删除当前选中的数据
-                    _memo = utils.deleteOne(_memo, index);
-                    _.updateMemoData(_memo);
-                } else if (_seetIndex != 4 && _seetIndex != undefined) {
-                    _memo[index].state = res.tapIndex + 1;
-                    _.updateMemoData(_memo);
+                if (_seetIndex < 3) {
+                    util.updateState(_id, _seetIndex + 1, (data) => {
+                        _.updateDataNoRefresh(data);
+                    });
+                } else if (_seetIndex == 3) {
+                    //跳转到修改页面
+                    wx.navigateTo({
+                        url: './modify/modify?id=' + _id
+                    })
+                } else if (_seetIndex == 4) {
+                    //删除数据
+                    util.deleteOneItem(_id, () => {
+                        _.refreshData();
+                    });
                 }
             },
             fail: function(res) {
@@ -47,65 +48,21 @@ Page({
             }
         });
     },
-    openAddModal: function() {
-        this.setData({
-            modalAnimate: tools.modalOpen()
-        });
-    },
-    closeAddModal: function() {
-        this.setData({
-            modalAnimate: tools.modalClose()
-        });
-    },
     addOneMemo: function(e) {
-        let _ = this;
-        let _title = e.detail.value.title.trim();
-        let _content = e.detail.value.content.trim();
-        if (!_title || !_content) {
-            tools.warnDialog('备忘名和内容不能为空！');
-            return false;
-        }
-        //清空输入框和文本域
-        //
-        _.closeAddModal();
-        utils.addOne(_title, _content, (data) => {
-            _.updateMemoData(data);
-            let _openId = tools.getUserOpenId();
-            let _formId = e.detail.formId;
-            //发送模版消息
-            _.sendTemplateMsg(_openId, _formId, {
-                name: _title,
-                content: _content,
-                date: tools.formatTime(new Date())
-            });
+        wx.navigateTo({
+            url: './add/add'
         });
-
     },
-    sendTemplateMsg: function(userId, formId, data) {
-        console.log('access_token', tools.getAccessToken());
-        let _opts = {
-            "touser": userId,
-            "template_id": "eKpMYdRrVjjhiSGkHlMp18JV3c7AFzvMFZY0b2iZD28",
-            "form_id": formId,
-            "data": {
-                "keyword1": {
-                    "value": data.name,
-                    "color": "#173177"
-                },
-                "keyword2": {
-                    "value": data.date,
-                    "color": "#173177"
-                },
-                "keyword3": {
-                    "value": data.content,
-                    "color": "#173177"
-                }
+    updateDataNoRefresh: function(_data) {
+        //无刷新改变数据，无后台请求
+        let _d = this.data.memo;
+        for (let i = 0; i < _d.length; i++) {
+            if (_d[i].id == _data.id) {
+                _d[i].state = _data.state;
             }
-        };
-        console.log('传递数据', _opts);
-        let _url = 'https://api.weixin.qq.com/cgi-bin/message/wxopen/template/send?access_token=' + tools.getAccessToken();
-        tools.post(_url, _opts, (res) => {
-            console.log(res);
+        }
+        this.setData({
+            memo: _d
         });
     },
     /*showDetail: function(e) {
@@ -157,11 +114,17 @@ Page({
             detailAnimate: modalOpenView.export()
         });
     },*/
-    onReady: function() {
-        // 页面渲染完成
+    refreshData: function() {
+        let _ = this;
+        util.getAllData((data) => {
+            _.setData({
+                memo: data
+            });
+        });
     },
     onShow: function() {
         // 页面显示
+        this.refreshData();
     },
     onHide: function() {
         // 页面隐藏

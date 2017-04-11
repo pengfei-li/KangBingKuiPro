@@ -1,6 +1,7 @@
 //app.js
 let config = require('./utils/config');
 let tools = require('./utils/tools.js');
+let SHA1 = require('./utils/SHA1.js');
 App({
     onLaunch: function() {
         //调用API从本地缓存中获取数据
@@ -19,7 +20,7 @@ App({
                         //保存openid
                         wx.setStorage({
                             key: 'userOpenId',
-                            data: res.openid
+                            data: SHA1(res.openid)
                         });
                     });
 
