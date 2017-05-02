@@ -8,6 +8,9 @@ Page({
         userInfo: config.userInfo
     },
     //事件处理函数
+    tapToGitHub:()=>{
+        tools.navTo('github');
+    },
     tapToWeather: () => {
         tools.navTo('weather');
     },

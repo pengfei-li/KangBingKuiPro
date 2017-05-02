@@ -1,6 +1,7 @@
 {
     "pages": [
         "pages/index/index",
+        "pages/github/github",
         "pages/2048/2048",
         "pages/weather/weather",
         "pages/calc/calc",

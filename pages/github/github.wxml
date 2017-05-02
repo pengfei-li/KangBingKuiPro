@@ -1,0 +1,20 @@
+
+<!--pages/github/github.wxml-->
+<view class="page">
+  <view class="page-content">
+    <view wx:for="{{githubData}}" wx:key="{{*this}}" class="ui-card">
+      <view class="item-name">{{item.name}}</view>
+      <view class="item-desc">{{item.description || '暂无'}}</view>
+      <view class="item-info ui-flex">
+        <view class="userInfo ui-flex-item">
+          <image class="icon" src="{{item.owner.avatar_url}}"></image>
+          {{item.owner.login}}
+        </view>
+        <view class="start ui-flex-item">
+          <image class="icon" src="../../src/icon/start.png"></image>
+          {{item.stargazers_count}}</view>
+        <view class="language ui-flex-item">{{item.language}}</view>
+      </view>
+    </view>
+  </view>
+</view>

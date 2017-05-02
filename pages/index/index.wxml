@@ -10,6 +10,18 @@
     </view>
   </view>
   <view class="page-content">
+  <!--个人信息-->
+  <view class="ui-panel">
+    <view class="panel-title">个人信息</view>
+    <view class="panel-content">
+    <view class="ui-flex">
+      <view class="ui-btn ui-flex-item">
+        <button type="primary" bindtap="tapToGitHub">GitHub</button>
+      </view>
+    </view>
+    </view>
+  </view>
+
   <!--实用工具-->
     <view class="ui-panel">
       <view class="panel-title">实用工具</view>

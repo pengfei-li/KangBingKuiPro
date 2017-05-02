@@ -1,0 +1,35 @@
+/* pages/github/github.wxss */
+.page-content{
+    padding-top: 0;
+}
+.item-name{
+    font-size: 18px;
+    font-weight:bold;
+}
+.item-desc{
+    font-size: 14px;
+}
+.item-info{
+    margin-top: 10rpx;
+    height: 60rpx;
+    line-height: 60rpx;
+    font-size: 16px;
+    color: #2c2c2c;
+}
+.userInfo,
+.start{
+    line-height: 60rpx;
+    vertical-align: middle;
+}
+.icon{
+    width: 50rpx;
+    height: 50rpx;
+    border-radius: 30rpx;
+    vertical-align: middle;
+}
+.start{
+    text-align: center;
+}
+.language{
+    text-align: right;
+}
