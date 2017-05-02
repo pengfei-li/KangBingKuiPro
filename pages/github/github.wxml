@@ -11,9 +11,9 @@
           {{item.owner.login}}
         </view>
         <view class="start ui-flex-item">
-          <image class="icon" src="../../src/icon/start.png"></image>
+          <image class="icon icon-start" src="../../src/icon/start.png"></image>
           {{item.stargazers_count}}</view>
-        <view class="language ui-flex-item">{{item.language}}</view>
+        <view class="language ui-flex-item {{item.language}}">{{item.language}}</view>
       </view>
     </view>
   </view>

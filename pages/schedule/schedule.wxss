@@ -1,14 +1,4 @@
 /* pages/schedule/schedule.wxss */
-.sche-card {
-	background-color: #fff;
-	border: 1rpx solid #eee;
-	color: #333;
-	padding: 1.1em;
-	margin:.6em .5em;
-	border-radius: 20rpx;
-	box-shadow: 0 0 20rpx rgba(120, 120, 120, .3);
-	position: relative;
-}
 .page-content{
 	padding-top: 0;
 }

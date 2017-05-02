@@ -27,9 +27,24 @@
     border-radius: 30rpx;
     vertical-align: middle;
 }
+.icon-start{
+    margin-right: 10rpx;
+}
 .start{
     text-align: center;
+    justify-content:center;
+    display: flex;
 }
 .language{
     text-align: right;
+}
+/*不同类别的颜色*/
+.JavaScript{
+    color:#42afff;
+}
+.CSS{
+    color: #3ee4bf;
+}
+.HTML{
+    color: #ffac45;
 }

@@ -109,9 +109,6 @@
   display: block;
   margin: .3em auto;
 }
-.page-content{
-  padding: 1em;
-}
 /*各项指数*/
 .index-item{
   margin:.6em .3em;

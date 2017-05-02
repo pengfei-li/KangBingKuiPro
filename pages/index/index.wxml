@@ -15,6 +15,9 @@
     <view class="panel-title">个人信息</view>
     <view class="panel-content">
     <view class="ui-flex">
+      <!--<view class="ui-btn ui-flex-item">
+        <button type="primary" bindtap="tapToResume">简历</button>
+      </view>-->
       <view class="ui-btn ui-flex-item">
         <button type="primary" bindtap="tapToGitHub">GitHub</button>
       </view>

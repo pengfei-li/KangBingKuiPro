@@ -8,8 +8,11 @@ Page({
         userInfo: config.userInfo
     },
     //事件处理函数
-    tapToGitHub:()=>{
+    tapToGitHub: () => {
         tools.navTo('github');
+    },
+    tapToResume: () => {
+        tools.navTo('resume');
     },
     tapToWeather: () => {
         tools.navTo('weather');

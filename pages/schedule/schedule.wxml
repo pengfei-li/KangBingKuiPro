@@ -4,7 +4,7 @@
     <view class="no-content">尚未查询到任何数据</view>
   </block>
   <block wx:else>
-    <view wx:for="{{schedule}}" wx:key="{{id}}" data-id="{{item.id}}" bindlongtap="operateItem" class="sche-card">
+    <view wx:for="{{schedule}}" wx:key="{{id}}" data-id="{{item.id}}" bindlongtap="operateItem" class="ui-card">
     <!-- //状态0：正常 1：进行中  2：过时  3：完成 -->
       <view wx:if="{{item.state == 0}}" class="sche-state"></view>
       <view wx:elif="{{item.state == 1}}" class="sche-state realtime"></view>
