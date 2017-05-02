@@ -1,31 +1,26 @@
 /* pages/memo/memo.wxss */
-
-.memo-card {
-  background-color: #42afff;
-  border: none;
-  color: #fff;
-  padding: 1.1em;
-  margin:.6em .5em;
-  border-radius: 20rpx;
-  box-shadow: 0 0 20rpx rgba(120, 120, 120, .5);
-}
-
 button {
   margin: 0.5em;
 }
-
-.memo-card.success,
-.ui-show-detail.success .content {
+.page-content{
+  padding-top: 0;
+}
+.ui-card{
+   color: #fff;
+   border:none;
+}
+.ui-card.default{
+  background-color: #42afff;
+}
+.ui-card.success {
   background-color: #3ee4bf;
 }
 
-.memo-card.realtime,
-.ui-show-detail.realtime .content {
+.ui-card.realtime {
   background-color: #ffac45;
 }
 
-.memo-card.outtime,
-.ui-show-detail.outtime .content {
+.ui-card.outtime {
   background-color: #ff42b2;
 }
 

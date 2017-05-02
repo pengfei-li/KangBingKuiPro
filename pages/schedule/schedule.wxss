@@ -9,6 +9,9 @@
 	box-shadow: 0 0 20rpx rgba(120, 120, 120, .3);
 	position: relative;
 }
+.page-content{
+	padding-top: 0;
+}
 .sche-state{
 	position: absolute;
 	right: 30rpx;

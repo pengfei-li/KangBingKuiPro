@@ -44,13 +44,16 @@
 
 /*ui-card*/
 .ui-card {
-  margin: .6em .5em;  /*padding:.5em;*/
-
-  /*background-color: #333;*/
-  border: 1px solid #ccc;
-  border-radius: 5px;
   font-family: -apple-system-font, Arial, "Times New Roman", "Helvetica Neue", sans-serif;
   letter-spacing: 1px;
+  background-color: #fff;
+	border: 1rpx solid #eee;
+	color: #333;
+	padding: 1.1em;
+	margin:.6em .5em;
+	border-radius: 20rpx;
+	box-shadow: 0 0 20rpx rgba(120, 120, 120, .3);
+	position: relative;
 }
 .ui-card-in-page-content {
   margin: 0;

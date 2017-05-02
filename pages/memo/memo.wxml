@@ -1,56 +1,63 @@
+
 <!--备忘录-->
 <view class="page">
-  <block wx:if="{{memo.length == 0}}">
-    <view class="no-content">尚未查询到任何数据</view>
-  </block>
-  <block wx:else>
-    <view wx:for="{{memo}}" wx:key="index">
-      <!--正常-->
-      <view wx:if="{{item.state == 0}}" class="memo-card" data-index="{{index}}">
-        <view class="memo-name">{{item.title}}
-          <image bindtap="setState" data-id="{{item.id}}" class="state-icon" src="../../src/icon/default.png"></image>
+  <view class="page-content">
+    <block wx:if="{{memo.length == 0}}">
+      <view class="no-content">尚未查询到任何数据</view>
+    </block>
+    <block wx:else>
+      <view wx:for="{{memo}}" wx:key="index">
+
+        <!--正常-->
+        <view wx:if="{{item.state == 0}}" class="ui-card default" data-index="{{index}}">
+          <view class="memo-name">{{item.title}}
+            <image bindtap="setState" data-id="{{item.id}}" class="state-icon" src="../../src/icon/default.png"></image>
+          </view>
+          <view class="memo-time">
+            {{item.date}}
+          </view>
+          <view class="memo-content">
+            <text>{{item.content}}</text>
+          </view>
         </view>
-        <view class="memo-time">
-          {{item.date}}
+
+        <!--完成-->
+        <view wx:elif="{{item.state == 3}}" class="ui-card success" data-index="{{index}}">
+          <view class="memo-name">{{item.title}}
+            <image class="state-icon" bindtap="setState" data-id="{{item.id}}" src="../../src/icon/success.png"></image>
+          </view>
+          <view class="memo-time">{{item.date}}</view>
+          <view class="memo-content">
+            <text>{{item.content}}</text>
+          </view>
         </view>
-        <view class="memo-content">
-          <text>{{item.content}}</text>
+
+        <!--进行中-->
+        <view wx:elif="{{item.state == 1}}" class="ui-card realtime" data-index="{{index}}">
+          <view class="memo-name">{{item.title}}
+            <image class="state-icon" bindtap="setState" data-id="{{item.id}}" src="../../src/icon/realtime.png"></image>
+          </view>
+          <view class="memo-time">{{item.date}}</view>
+          <view class="memo-content">
+            <text>{{item.content}}</text>
+          </view>
+        </view>
+
+        <!--超时-->
+        <view wx:else class="ui-card outtime" data-index="{{index}}">
+          <view class="memo-name">{{item.title}}
+            <image class="state-icon" bindtap="setState" data-id="{{item.id}}" src="../../src/icon/outtime.png"></image>
+          </view>
+          <view class="memo-time">{{item.date}}</view>
+          <view class="memo-content">
+            <text>{{item.content}}</text>
+          </view>
         </view>
       </view>
-      <!--完成-->
-      <view wx:elif="{{item.state == 3}}" class="memo-card success" data-index="{{index}}">
-        <view class="memo-name">{{item.title}}
-          <image class="state-icon" bindtap="setState" data-id="{{item.id}}" src="../../src/icon/success.png"></image>
-        </view>
-        <view class="memo-time">{{item.date}}</view>
-        <view class="memo-content">
-          <text>{{item.content}}</text>
-        </view>
-      </view>
-      <!--进行中-->
-      <view wx:elif="{{item.state == 1}}" class="memo-card realtime" data-index="{{index}}">
-        <view class="memo-name">{{item.title}}
-          <image class="state-icon" bindtap="setState" data-id="{{item.id}}" src="../../src/icon/realtime.png"></image>
-        </view>
-        <view class="memo-time">{{item.date}}</view>
-        <view class="memo-content">
-          <text>{{item.content}}</text>
-        </view>
-      </view>
-      <!--超时-->
-      <view wx:else class="memo-card outtime" data-index="{{index}}">
-        <view class="memo-name">{{item.title}}
-          <image class="state-icon" bindtap="setState" data-id="{{item.id}}" src="../../src/icon/outtime.png"></image>
-        </view>
-        <view class="memo-time">{{item.date}}</view>
-        <view class="memo-content">
-          <text>{{item.content}}</text>
-        </view>
+      <text class="tip-bottom">你可以在内容管理中清空所有的备忘录</text>
+    </block>
+    <view class="ui-add-btn" bindtap="addOneMemo">
+      <image class="ui-add-icon" src="../../src/icon/add.png"></image>
     </view>
   </view>
-  <text class="tip-bottom">你可以在内容管理中清空所有的备忘录</text>
-  </block> 
-  <view class="ui-add-btn" bindtap="addOneMemo">
-    <image class="ui-add-icon" src="../../src/icon/add.png"></image>
-  </view> 
 </view>

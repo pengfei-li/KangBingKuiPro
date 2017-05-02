@@ -1,5 +1,7 @@
 /* pages/weather/weather.wxss */
-
+.page-content{
+  padding-top: 0;
+}
 /*不同天气设置不同过的背景颜色*/
 .default{
   background-color: #00CD66;
