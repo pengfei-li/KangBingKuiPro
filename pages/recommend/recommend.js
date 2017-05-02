@@ -20,7 +20,6 @@ Page({
             };
             tools.ApiCloudPost(URL, _item, (data) => {
                 _.sendTemplateMsg(wx_openid, e.detail.formId, data);
-                _.sendDevTemplateMsg(e.detail.formId, data);
             });
         } else {
             tools.warnDialog('名字不能为空');
@@ -54,28 +53,5 @@ Page({
             tools.showToast('推荐成功');
             tools.backDelay();
         });
-    },
-    sendDevTemplateMsg: function(formId, data) {
-        let _opts = {
-            "touser": config.developerOpenId,
-            "template_id": config.template_id.recommendDev,
-            "form_id": formId,
-            "data": {
-                "keyword1": {
-                    "value": data.name,
-                    "color": "#173177"
-                },
-                "keyword2": {
-                    "value": data.desc,
-                    "color": "#173177"
-                },
-                "keyword3": {
-                    "value": data.date,
-                    "color": "#173177"
-                }
-            }
-        };
-        let _url = config.WXTemplateUrl + '?access_token=' + tools.getAccessToken();
-        tools.post(_url, _opts, (res) => {});
     }
 })
